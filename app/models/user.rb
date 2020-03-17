@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :groups
   has_many :subscriptions
+  has_many :comments
   after_create :welcome_to_user_email
   after_create :new_user_register_to_admin_email
 
