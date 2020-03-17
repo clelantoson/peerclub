@@ -22,7 +22,7 @@
   <tbody>
     <% @groups.each do |group| %>
       <tr>
-        <td><%= group.user %></td>
+        <td><%= group.user.first_name %></td>
         <td><%= group.title %></td>
         <td><%= group.description %></td>
         <td><%= group.udemy_course_title %></td>
