@@ -1,0 +1,64 @@
+<%= form_with(model: group, local: true) do |form| %>
+  <% if group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+      <ul>
+      <% group.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :udemy_course_title %>
+    <%= form.text_field :udemy_course_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :udemy_course_id %>
+    <%= form.number_field :udemy_course_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :starting_date %>
+    <%= form.date_select :starting_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :max_attendees %>
+    <%= form.number_field :max_attendees %>
+  </div>
+
+  <div class="field">
+    <%= form.label :meeting_point %>
+    <%= form.text_field :meeting_point %>
+  </div>
+
+  <div class="field">
+    <%= form.label :remote %>
+    <%= form.check_box :remote %>
+  </div>
+
+  <div class="field">
+    <%= form.label :work_period %>
+ 
+    <%= form.select(:work_period, ['Week-end', 'Soirée', 'Journée'], {}) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
