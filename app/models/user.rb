@@ -5,8 +5,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :groups
+  has_many :subscriptions
   after_create :welcome_to_user_email
   after_create :new_user_register_to_admin_email
+
+  # validates :first_name, presence: true
+  # validates :last_name, presence: true
+  # validates :description, presence: true
+  # validates :email, presence: true, format: 
 
   # ========= START MAILER METHODS ========= 
 
