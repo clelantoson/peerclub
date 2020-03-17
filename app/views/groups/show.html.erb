@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @group.user.first_name %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @group.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @group.description %>
+</p>
+
+<p>
+  <strong>Udemy course title:</strong>
+  <%= @group.udemy_course_title %>
+</p>
+
+<p>
+  <strong>Udemy course:</strong>
+  <%= @group.udemy_course_id %>
+</p>
+
+<p>
+  <strong>Starting date:</strong>
+  <%= @group.starting_date %>
+</p>
+
+<p>
+  <strong>Max attendees:</strong>
+  <%= @group.max_attendees %>
+</p>
+
+<p>
+  <strong>Meeting point:</strong>
+  <%= @group.meeting_point %>
+</p>
+
+<p>
+  <strong>Remote:</strong>
+  <%= @group.remote %>
+</p>
+
+<p>
+  <strong>Work period:</strong>
+  <%= @group.work_period %>
+</p>
+
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>
