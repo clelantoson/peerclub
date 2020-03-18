@@ -31,42 +31,4 @@ class User < ApplicationRecord
 
   # ========= END MAILER ========= 
 
-
-# # DANS LE MODEL GROUP
-#   after_create :create_group_to_admin_email
-#   after_create :user_create_group_to_grp_admin_email
-  
-#   def create_group_to_admin_email
-#     AdminMailer.create_group_to_admin_email(self).deliver_now
-#   end
-
-#   def user_create_group_to_grp_admin_email
-#     UserMailer.user_create_group_to_grp_admin_email(self).deliver_now
-#   end
-
-# # DANS LE MODEL SUBSCRIPTION
-#   after_create :new_user_subscribe_a_group_to_admin_email
-#   after_create :new_user_subscribe_alert_to_grp_users_email
-#   after_create :user_subscribe_group_to_user_email
-
-#   def new_user_subscribe_a_group_to_admin_email
-#     AdminMailer.new_user_subscribe_a_group_to_admin_email(self).deliver_now
-#   end
-
-#   def new_user_subscribe_alert_to_grp_users_email
-#     UserMailer.new_user_subscribe_alert_to_grp_users_email(self).deliver_now
-#   end
-
-#   def user_subscribe_group_to_user_email
-#     UserMailer.user_subscribe_group_to_user_email(self).deliver_now
-#   end
-
-# # DANS LE MODEL COMMENT
-#   after_create :new_comment_alert_to_grp_users_email
-
-#   def new_comment_alert_to_grp_users_email
-#     UserMailer.new_comment_alert_to_grp_users_email(self).deliver_now
-#   end
-
-
 end

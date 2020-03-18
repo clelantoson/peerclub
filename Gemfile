@@ -24,6 +24,8 @@ gem 'sendgrid-ruby'
 gem 'dotenv-rails'
 gem 'popper_js', '~> 1.16.0'
 gem "font-awesome-rails"
+gem 'udemy', '~> 0.1.4'
+gem "rest-client", "~> 2.1"
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
