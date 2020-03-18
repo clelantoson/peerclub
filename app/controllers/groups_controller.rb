@@ -17,7 +17,8 @@ class GroupsController < ApplicationController
   def new
     @group = Group.new
     udemy = Udemy.new
-    @courses = udemy.courses_list('ruby')
+    @search_query = params[:search]
+    @courses = udemy.courses_list(params[:search])
     puts @courses.first['title']
     puts @courses.first['headline']
     puts @courses.first['image_240x135']
@@ -31,12 +32,12 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
-    @group = Group.new(group_params)
+    @group = Group.new(udemy_course_title: params[:udemy_course_title], udemy_course_id: params[:udemy_course_id], udemy_url_img: params[:udemy_url_img])
     @group.user = current_user
 
     respond_to do |format|
       if @group.save
-        format.html { redirect_to @group, notice: 'Group was successfully created.' }
+        format.html { redirect_to edit_group_path(@group), notice: 'Group was successfully created.' }
         format.json { render :show, status: :created, location: @group }
       else
         format.html { render :new }
@@ -77,6 +78,6 @@ class GroupsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def group_params
-      params.require(:group).permit(:title, :description, :udemy_course_title, :udemy_course_id, :starting_date, :max_attendees, :meeting_point, :remote, :work_period)
+      params.require(:group).permit(:title, :description, :udemy_course_title, :udemy_course_id, :udemy_url_img, :starting_date, :max_attendees, :meeting_point, :remote, :work_period, :city)
     end
 end

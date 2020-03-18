@@ -1,8 +1,12 @@
 <h1>New Group</h1>
 
-<%= render 'form', group: @group %>
 
-<%= link_to 'Back', groups_path %>
+<%= form_tag("", method: "get") do %>
+  <%= label_tag(:search, "Recherche un cours sympa") %>
+  <%= text_field_tag(:search, @search_query) %>
+  <%= submit_tag("Rechercher") %>
+<% end %>
+
 
 <table class="table">
   <thead>
@@ -19,9 +23,13 @@
           <td> <%= image_tag(course['image_240x135']) %></td>
           <td> <%= course['title'] %></td>
           <td><%= course['headline'] %></td>
-          <td><%= course['id']%></td>
+          <td><%= link_to "Choisir", groups_path(udemy_course_title: course['title'], udemy_course_id: course['id'], udemy_url_img: course['image_240x135']), method: :post %></td>
+
         </tr>
         <% end %>
     </tbody>
 
 </table>
+
+
+<%= link_to 'Back', groups_path %>
