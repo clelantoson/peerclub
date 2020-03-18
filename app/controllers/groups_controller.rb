@@ -19,10 +19,6 @@ class GroupsController < ApplicationController
     udemy = Udemy.new
     @search_query = params[:search]
     @courses = udemy.courses_list(params[:search])
-    puts @courses.first['title']
-    puts @courses.first['headline']
-    puts @courses.first['image_240x135']
-    puts @courses.first['id']
   end
 
   # GET /groups/1/edit
