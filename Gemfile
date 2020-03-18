@@ -24,8 +24,7 @@ gem 'sendgrid-ruby'
 gem 'dotenv-rails'
 gem 'popper_js', '~> 1.16.0'
 gem "font-awesome-rails"
-gem 'udemy', '~> 0.1.4'
-gem "rest-client", "~> 2.1"
+gem 'faraday'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -60,6 +59,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'pry'
 end
 
 group :test do

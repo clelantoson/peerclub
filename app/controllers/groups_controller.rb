@@ -5,6 +5,7 @@ class GroupsController < ApplicationController
   # GET /groups.json
   def index
     @groups = Group.all
+  
   end
 
   # GET /groups/1
@@ -15,6 +16,12 @@ class GroupsController < ApplicationController
   # GET /groups/new
   def new
     @group = Group.new
+    udemy = Udemy.new
+    @courses = udemy.courses_list('ruby')
+    puts @courses.first['title']
+    puts @courses.first['headline']
+    puts @courses.first['image_240x135']
+    puts @courses.first['id']
   end
 
   # GET /groups/1/edit
