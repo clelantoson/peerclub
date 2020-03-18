@@ -18,7 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'faker'
 gem 'devise'
-gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap'
 gem 'jquery-rails'
 gem 'sendgrid-ruby'
 gem 'dotenv-rails'
