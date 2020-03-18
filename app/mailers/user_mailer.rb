@@ -16,7 +16,7 @@ class UserMailer < ApplicationMailer
   end
 
   def user_subscribe_group_to_user_email(user)
-
+    
   end
 
   def welcome_to_user_email(user)
