@@ -3,3 +3,25 @@
 <%= render 'form', group: @group %>
 
 <%= link_to 'Back', groups_path %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Course title</th>
+      <th scope="col">Description</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+   <tbody>
+      <% @courses.each do |course| %>
+        <tr> 
+          <td> <%= image_tag(course['image_240x135']) %></td>
+          <td> <%= course['title'] %></td>
+          <td><%= course['headline'] %></td>
+          <td><%= course['id']%></td>
+        </tr>
+        <% end %>
+    </tbody>
+
+</table>
