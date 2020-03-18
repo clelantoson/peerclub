@@ -35,6 +35,8 @@
             <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Profile
             </a>
+
+            <%= link_to "My Profile", user_path(current_user) , class:"dropdown-item" %>
             
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <%
