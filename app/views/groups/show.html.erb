@@ -8,7 +8,7 @@
 <div class="container">
     <h2><strong><%= @group.title %></strong></h2>
     <p>
-    <strong>Créer par : <%= @group.user.first_name %></strong> - <%= @group.max_attendees %> places.
+    <strong>Créer par : <%= @group.user.first_name %></strong> - <%= @group_subs.count %> / <%= @group.max_attendees %> place<% if @group.max_attendees > 1 %>s<%end%>.
     <br>
     Début : <%= @group.starting_date %>
     <br>
@@ -19,12 +19,20 @@
     <%= @group.description %>
   </p>
   <br>
-  <% if @user_sub == true %>
-    <%= link_to "Leave group", {:controller => "subscriptions", :action => 'destroy', :group_id => @group.id}, class: "btn-lg btn-info", method: :delete %>
+  <%=@group_subs.count%>
+  <% if (@group_subs.count < @group.max_attendees) || (@user_sub == true) %>
+    
+    <% if @user_sub == true %>
+      <%= link_to "Leave group", {:controller => "subscriptions", :action => 'destroy', :group_id => @group.id}, class: "btn-lg btn-info", method: :delete %>
+    <%end%>
+    <% if @user_sub == false %>
+      <%= link_to "Join group", group_subscriptions_path(@group.id), class: "btn-lg btn-info", method: :post %>
+    <%end%>
+
+  <%else%>
+    <span class="btn-lg btn-info">Complet</span>
   <%end%>
-  <% if @user_sub == false %>
-    <%= link_to "Join group", group_subscriptions_path(@group.id), class: "btn-lg btn-info", method: :post %>
-  <%end%>
+
   <br>
   <br>
   <p>
