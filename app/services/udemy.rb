@@ -9,5 +9,12 @@ class Udemy
     courses = JSON.parse(courses.body)
     courses['results']
   end
+
+  def course_details(udemy_course_id)
+    puts 'udemy_course_id', udemy_course_id
+    udemy_course = @udemy.get('courses/' + udemy_course_id.to_s)
+    udemy_course = JSON.parse(udemy_course.body)
+    udemy_course
+  end
 end
 

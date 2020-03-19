@@ -12,17 +12,17 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    udemy = Udemy.new
     @group = Group.find_by(id:params[:id])
     @user = current_user
     @user_sub = Subscription.where(user:@user,group_id:@group.id).exists?
-    puts "======================================"
-    puts "======================================"
-    puts @user_sub
-    puts "======================================"
-    puts "======================================"
-
     @group_subs = Subscription.where(group_id:params[:id])
-
+    @udemy_course = udemy.course_details(@group.udemy_course_id)
+    puts @udemy_course['title']
+    puts @udemy_course['price']
+    puts @udemy_course['visible_instructors'].first['title']
+    puts @udemy_course['url']
+  
   end
 
   # GET /groups/new
