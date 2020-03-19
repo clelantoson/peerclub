@@ -55,7 +55,8 @@
   </p>
 
   <%= render "subscriptions/group_subs" %>
-
+  <%= render 'comments/comment' %><br /><br />
+  <%= render 'comments/form' %>
 </div>
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>
