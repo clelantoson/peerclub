@@ -6,15 +6,17 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'false' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'false' %>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   </head>
 
   <body>
 
-    
+
   <!-- start navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-    
+
       <%= link_to image_tag("https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg",  style: "max-height: 50px", alt: "logo"), root_path,  class:"navbar-brand" %>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,21 +29,21 @@
             <%= link_to "Home", root_path, class:"nav-link" %>
             <span class="sr-only">(current)</span>
           </li>
-         
+
          <!-- DROPDOWN LOGIN -->
           <% if user_signed_in? %>
-          
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Profile
             </a>
 
             <%= link_to "My Profile", user_path(current_user) , class:"dropdown-item" %>
-            
+
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <%
 =begin%>
- <%= link_to "My Profile", user_path(current_user) , class:"dropdown-item" %> 
+ <%= link_to "My Profile", user_path(current_user) , class:"dropdown-item" %>
 <%
 =end%>
               <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
@@ -62,11 +64,11 @@
           </li>
           <% end %>
       </div>
-   
+
     </nav>
   <!-- end navbar -->
 
-  
+
        <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
     <%= yield %>
