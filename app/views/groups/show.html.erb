@@ -19,11 +19,19 @@
     <%= @group.description %>
   </p>
   <br>
-   <% if @user_sub == true %>
-    <%= link_to "Leave group", {:controller => "subscriptions", :action => 'destroy', :group_id => @group.id}, class: "btn-lg btn-info", method: :delete %>
-  <%end%>
-  <% if @user_sub == false %>
-    <%= link_to "Join group", group_subscriptions_path(@group.id), class: "btn-lg btn-info", method: :post %>
+
+  <%=@group_subs.count %>
+  <% if (@group_subs.count < @group.max_attendees) || (@user_sub == true) %>
+    
+    <% if @user_sub == true %>
+      <%= link_to "Leave group", {:controller => "subscriptions", :action => 'destroy', :group_id => @group.id}, class: "btn-lg btn-info", method: :delete %>
+    <%end%>
+    <% if @user_sub == false %>
+      <%= link_to "Join group", group_subscriptions_path(@group.id), class: "btn-lg btn-info", method: :post %>
+    <%end%>
+
+  <%else%>
+    <span class="btn-lg btn-info">Complet</span>
   <%end%>
   <br>
   <br>
