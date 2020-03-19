@@ -8,7 +8,7 @@
 <div class="container">
     <h2><strong><%= @group.title %></strong></h2>
     <p>
-    <strong>Créer par : <%= @group.user.first_name %></strong> - <%= @group.max_attendees %> places.
+    <strong>Créer par : <%= @group.user.first_name %></strong> - <%= @group_subs.count %> / <%= @group.max_attendees %> place<% if @group.max_attendees > 1 %>s<%end%>.
     <br>
     Début : <%= @group.starting_date %>
     <br>
