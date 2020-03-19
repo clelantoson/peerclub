@@ -25,6 +25,8 @@ gem 'dotenv-rails'
 gem 'popper_js', '~> 1.16.0'
 gem "font-awesome-rails"
 gem 'faraday'
+gem 'activestorage'
+
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
