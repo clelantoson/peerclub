@@ -7,4 +7,15 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :date_of_birth, :description, :job])
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :date_of_birth, :description, :job])
   end
+
+   private
+  def authenticate_user!
+    if user_signed_in?
+      super
+    else
+      redirect_to new_user_session_path, flash[:connect_first] => 'Connectez vous svp'
+    end
+  end
+
+
 end
