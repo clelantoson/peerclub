@@ -1,47 +1,41 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Groups</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Udemy course title</th>
-      <th>Udemy course</th>
-      <th>Starting date</th>
-      <th>Max attendees</th>
-      <th>Meeting point</th>
-      <th>Remote</th>
-      <th>Work period</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @groups.each do |group| %>
-      <tr>
-        <td><%= group.user.first_name %></td>
-        <td><%= group.title %></td>
-        <td><%= group.description %></td>
-        <td><%= group.udemy_course_title %></td>
-        <td><%= group.udemy_course_id %></td>
-        <td><%= group.starting_date %></td>
-        <td><%= group.max_attendees %></td>
-        <td><%= group.meeting_point %></td>
-        <td><%= group.remote %></td>
-        <td><%= group.work_period %></td>
-        <td><%= link_to 'Show', group %></td>
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
-        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Group', new_group_path %>
-
+<div class="container">
+  <div class="row">
+    <div class="container p-5 mb-5">
+      <h2 class="text-center my-5" id="ici">GROUPS</h2>
+      <h3>Wanna create ur's ?</h3>
+      <%= link_to 'New Group', new_group_path %>
+      <div class="row">
+        <% @groups.each do |group| %>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card mb-4 text-center">
+              <div class="card-body">
+                <h5 class="h3 text-black">Title :<%= group.title %></h5>
+                  <p>User : <%= group.user.first_name %>'s group</p>
+                <tr>
+                  <img src="" alt="_Udemy_picture_"><br><br>
+                  <td>Description : <%= group.description %></td>
+                  <br>
+                  <td><%= group.udemy_course_title %></td>
+                  <td><%= group.udemy_course_id %></td>
+                  <td>Date : <%= group.starting_date %></td>
+                  <br>
+                  <td>Places : <%= group.max_attendees %></td>
+                  <br>
+                  <td>Location : <%= group.meeting_point %></td>
+                  <td><%= group.remote %></td>
+                  <td><%= group.work_period %></td>
+                  <br>
+                  <td><%= link_to 'Show', group %></td>
+                  <td><%= link_to 'Edit', edit_group_path(group) %></td>
+                  <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
