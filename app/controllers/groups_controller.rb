@@ -17,6 +17,7 @@ class GroupsController < ApplicationController
   def new
     @group = Group.new
     udemy = Udemy.new
+
     @search_query = params[:search]
     @courses = udemy.courses_list(params[:search])
   end
