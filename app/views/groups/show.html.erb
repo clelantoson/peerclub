@@ -1,65 +1,45 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @group.user.first_name %>
-</p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="container">
+    <h1>Peerclub.io, rentre dans le game !</h1>
+  </div>
+</div>
+<div class="container">
+    <h2><strong><%= @group.title %></strong></h2>
+    <p>
+    <strong>Créer par : <%= @group.user.first_name %></strong> - <%= @group.max_attendees %> places.
+    <br>
+    Début : <%= @group.starting_date %>
+    <br>
+    <%= @group.meeting_point %> <%= @group.city %> - <%= @group.work_period %>
+  </p>
+  <p>
+    <strong>Description:</strong>
+    <%= @group.description %>
+  </p>
+  <br>
+  <%= link_to "Join group", "#", class: "btn-lg btn-info" %>
+  <br>
+  <br>
+  <p>
+    <strong>Udemy course title:</strong>
+    <%= @group.udemy_course_title %>
+  </p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @group.title %>
-</p>
+  <p>
+    <strong>Udemy course:</strong>
+    <%= @group.udemy_course_id %>
+  </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @group.description %>
-</p>
-
-<p>
-  <strong>Udemy course title:</strong>
-  <%= @group.udemy_course_title %>
-</p>
-
-<p>
-  <strong>Udemy course:</strong>
-  <%= @group.udemy_course_id %>
-</p>
-
-<p>
-  <strong>Udemy course picture:</strong>
-  <%= @group.udemy_url_img %>
-</p>
-
-<p>
-  <strong>Starting date:</strong>
-  <%= @group.starting_date %>
-</p>
-
-<p>
-  <strong>Max attendees:</strong>
-  <%= @group.max_attendees %>
-</p>
-
-<p>
-  <strong>Meeting point:</strong>
-  <%= @group.meeting_point %>
-</p>
-
-<p>
-  <strong>City :</strong>
-  <%= @group.city %>
-</p>
-
-
-<p>
-  <strong>Remote:</strong>
-  <%= @group.remote %>
-</p>
-
-<p>
-  <strong>Work period:</strong>
-  <%= @group.work_period %>
-</p>
-
+  <p>
+    <strong>Udemy course picture:</strong>
+    <%= @group.udemy_url_img %>
+  </p>
+  <p>
+    <strong>Remote:</strong>
+    <%= @group.remote %>
+  </p>
+</div>
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>
