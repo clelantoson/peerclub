@@ -19,7 +19,7 @@
     <%= @group.description %>
   </p>
   <br>
-  <%=@group_subs.count%>
+  <%=@group_subs.count %>
   <% if (@group_subs.count < @group.max_attendees) || (@user_sub == true) %>
     
     <% if @user_sub == true %>
