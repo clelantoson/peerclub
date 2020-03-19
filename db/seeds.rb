@@ -24,12 +24,3 @@ User.create(
   last_name: Faker::Name.last_name
 )
 puts "User 2"
-#admin
-User.create(
-  email: "useradmin@yopmail.com",
-  password: "123456",
-  first_name: "AD",
-  last_name: "MIN",
-  is_admin: true
-)
-puts "ADMIN created"
