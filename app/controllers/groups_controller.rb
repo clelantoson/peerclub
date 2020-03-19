@@ -32,22 +32,12 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(udemy_course_title: params[:udemy_course_title], udemy_course_id: params[:udemy_course_id], udemy_url_img: params[:udemy_url_img])
     @group.user = current_user
-    puts "======================================"
-    puts "======================================"
-    puts @group
-    puts "======================================"
-    puts "======================================"
+
     respond_to do |format|
       if @group.save
         format.html { redirect_to edit_group_path(@group), flash[:success] = 'Group was successfully created.' }
         format.json { render :show, status: :created, location: @group }
       else
-    puts "======================================"
-    puts "======================================"
-
-    puts @group.errors.full_messages
-    puts "======================================"
-    puts "======================================"
         format.html { render :new }
         format.json { render json: @group.errors, status: :unprocessable_entity }
       end

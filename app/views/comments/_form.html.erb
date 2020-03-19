@@ -1,0 +1,9 @@
+
+<%= form_tag(comments_path, method: 'post', class: 'form-group') do %>
+  <%= hidden_field_tag(:group_id, @group.id) %>
+
+    <%= label_tag 'Content' %>
+    <%= text_area_tag 'content' %>
+    <br/> <br/>
+    <%= submit_tag "Submit", class:'btn btn-primary' %>
+  <% end %>
