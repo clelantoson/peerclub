@@ -12,6 +12,17 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    @group = Group.find_by(id:params[:id])
+    @user = current_user
+    @user_sub = Subscription.where(user:@user,group_id:@group.id).exists?
+    puts "======================================"
+    puts "======================================"
+    puts @user_sub
+    puts "======================================"
+    puts "======================================"
+
+    @group_subs = Subscription.where(group_id:params[:id])
+
   end
 
   # GET /groups/new

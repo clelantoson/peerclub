@@ -19,7 +19,12 @@
     <%= @group.description %>
   </p>
   <br>
-  <%= link_to "Join group", "#", class: "btn-lg btn-info" %>
+  <% if @user_sub == true %>
+    <%= link_to "Leave group", {:controller => "subscriptions", :action => 'destroy', :group_id => @group.id}, class: "btn-lg btn-info", method: :delete %>
+  <%end%>
+  <% if @user_sub == false %>
+    <%= link_to "Join group", group_subscriptions_path(@group.id), class: "btn-lg btn-info", method: :post %>
+  <%end%>
   <br>
   <br>
   <p>
@@ -40,6 +45,11 @@
     <strong>Remote:</strong>
     <%= @group.remote %>
   </p>
+
+  <%= render "subscriptions/group_subs" %>
+
 </div>
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>
+
+

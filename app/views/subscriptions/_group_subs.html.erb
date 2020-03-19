@@ -1,0 +1,21 @@
+<div class="col-12">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Job</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @group_subs.each do |sub| %>
+      <tr>
+      <td><%= image_tag "default_avatar.png", style:"max-width:50px" %><%= sub.user.first_name %> <%= sub.user.last_name %></td>
+      <td><%= sub.user.job %></td>
+      <td><% if sub.user != current_user %><%= mail_to sub.user.email, "Contacter" %><%else%>It's you<%end%></td>
+    </tr>
+    <%end%>
+  </tbody>
+
+</div>

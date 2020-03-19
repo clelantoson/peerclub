@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :groups
+  resources :groups do
+    resources :subscriptions
+  end
   devise_for :users
   resources :users, only: [:show]
   
