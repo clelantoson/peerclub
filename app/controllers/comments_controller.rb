@@ -18,8 +18,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(content: params['content'], user: current_user,  group_id: params['group_id'].to_i)
     if @comment.save
-      @success = "Votre commentaire a bien été créé"
-      redirect_to groups_path(:success => @success)
+      redirect_to group_path(@comment.group_id), flash: { success:'Votre commentaire a bien été créé' }
     else
       redirect_back(fallback_location: root_path)
       @error = @comment.errors.full_messages
