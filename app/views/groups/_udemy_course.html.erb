@@ -1,4 +1,4 @@
-   <%=@udemy_course['title']%>
-   <%=@udemy_course['price']%>
-   <%=@udemy_course['visible_instructors'].first['title']%>
-   <%=@udemy_course['url']%>
+   <%=@udemy_course['title']%><br>
+   <%=@udemy_course['price']%><br>
+   <%=@udemy_course['visible_instructors'].first['title']%><br>
+   <%= link_to "Plus d'infos", "https://www.udemy.com#{@udemy_course['url']}", class:'btn btn-primary'%><br>
