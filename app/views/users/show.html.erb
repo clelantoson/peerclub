@@ -1,25 +1,30 @@
 
 <div class="container">
+  <div class="card" style="width: 18rem;">
+  <div class="text-center">
+      <%= image_tag @user.avatar, style:"max-width:100px", class: "rounded-circle" if @user.avatar.attached? %> 
+       </div>
+      <div class="card-body">
+        <h1 class="card-title"><%= @user.first_name %> <%= @user.last_name %></h1>
+        <p class="card-text">
+            <ul>
+              <li class="list-unstyled"> Job : <%= @user.job %></li>
+                  <li class="list-unstyled"> Email : <%= @user.email %></li>
+                  <hr>
+              <li class="list-unstyled"> Description : <%=@user.description %></li> 
+              <li class="list-unstyled"> Birthday : <%= @user.date_of_birth %></li> 
+            </ul>
+          </p>
+          </div>
+        </div>
 
-  <h1><%= @user.first_name %> <%= @user.last_name %></h1>
- 
-  <p> 
-    <ul>
-      <li> Description : <%=@user.description %></li>
-      <li> Birthday : <%= @user.date_of_birth %></li>
-      <li> Email : <%= @user.email %></li>
-      <li>Job : <%= @user.job %></li>
-    </ul>
-  </p>
 
-    <%= image_tag @user.avatar, style:"max-width:100px" if @user.avatar.attached? %>
+  <h3>Change avatar ?</h3>
 
-  <h3>Changer d'avatar ?</h3>
 <%= form_tag avatars_path(@user), multipart: true do %>
   <%= file_field_tag :avatar, onchange:"myFunction()" %>
-  <%= submit_tag "mettre à jour", disabled:true, id: 'submit_avatar' %>
+  <%= submit_tag "Update", disabled:true, id: 'submit_avatar' %>
 <% end %>
-<p id="text"></p>
 
 </div>
 
