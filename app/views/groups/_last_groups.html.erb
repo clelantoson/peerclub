@@ -5,7 +5,7 @@
                 <h5 class="h3 text-black">Title :<%= group.title %></h5>
                   <p>User : <%= group.user.first_name %>'s group</p>
                 <tr>
-                  <%= image_tag group.udemy_url_img %><br><br>
+                  <%= image_tag group.udemy_url_img unless group.udemy_url_img.nil?  %><br><br>
                   <td>Description : <%= group.description %></td>
                   <br>
                   <td><%= group.udemy_course_title %></td>
