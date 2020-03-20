@@ -1,0 +1,31 @@
+<% @groups.each do |group| %>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card mb-4 text-center">
+              <div class="card-body">
+                <h5 class="h3 text-black">Title :<%= group.title %></h5>
+                  <p>User : <%= group.user.first_name %>'s group</p>
+                <tr>
+                  <%= image_tag group.udemy_url_img %><br><br>
+                  <td>Description : <%= group.description %></td>
+                  <br>
+                  <td><%= group.udemy_course_title %></td>
+                  <td><%= group.udemy_course_id %></td>
+                  <td>Date : <%= group.starting_date %></td>
+                  <br>
+                  <td>Places : <%= group.max_attendees %></td>
+                  <br>
+                  <td>Location : <%= group.meeting_point %></td>
+                  <td><%= group.remote %></td>
+                  <td><%= group.work_period %></td>
+                  <br>
+                  <td><%= link_to 'View', group %></td>
+
+                  <%if user_signed_in? == true%>
+                  <td><%= link_to 'Edit', edit_group_path(group) %></td>
+                  <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    <% end %>
+                </tr>
+              </div>
+            </div>
+          </div>
+        <% end %>
