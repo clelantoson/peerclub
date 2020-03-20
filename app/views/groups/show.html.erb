@@ -56,13 +56,15 @@
     <%= @group.remote %>
   </p>
 
-  <%= render "subscriptions/group_subs" %>
+  <%= render 'udemy_course' %>
   <%= render 'comments/comment' %><br /><br />
   <%= render 'comments/form' %>
+  <%= render 'subscriptions/group_subs' %>
 </div>
+
+
+
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>
 
 
-
- <%= render 'udemy' %>
