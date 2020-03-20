@@ -13,7 +13,11 @@
   </head>
 
   <body>
-
+       <% flash.each do |type, msg| %>
+        <div class="alert alert-danger">
+          <%= msg %>
+        </div>
+        <% end %>
 
   <!-- start navbar -->
   <nav class="navbar navbar-shadow navbar-expand-lg navbar-light bg-white fixed-top">
@@ -69,10 +73,7 @@
     </nav>
   <!-- end navbar -->
 
-    <%=flash[:danger]%>
-    
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+
     <%= yield %>
     <script src="https://kit.fontawesome.com/b1724147a0.js" crossorigin="anonymous"></script>
   </body>
