@@ -1,0 +1,107 @@
+body {
+  font-family: 'Roboto', sans-serif !important;
+}
+.navbar {
+  padding: 1rem !important;
+}
+
+.navbar-shadow {
+  -webkit-box-shadow: 0px -2px 15px 1px rgba(0,0,0,0.30); 
+  box-shadow: 0px -2px 15px 1px rgba(0,0,0,0.30);
+}
+
+.jumbo {
+  background-image:url("jumbo_bg.png");
+  background-size: cover;
+  min-height: 400px;
+}
+
+.container-why {
+}
+
+.whychoose{
+  background-color: rgba(246,248,250,1);
+  min-height: 400px;
+
+}
+
+.why {
+  background-color: #fff;
+  padding: 3rem !important;
+  margin: 1rem;
+  max-width: 30%;
+
+}
+
+.why p {
+  line-height: 28px;
+  text-align: left;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  color: rgba(152,152,152,1);
+}
+
+.fs-3 {
+  font-size: 3rem;
+}
+
+.jumbo-head{
+
+  padding-top:4rem;
+  max-width: 1140px;
+  filter: drop-shadow(3px 3px 4px rgba(0, 0, 0, 0.471));
+  color: rgba(255,255,255,1);
+}
+
+.punchline-jumbo {
+  line-height: 67px;
+  text-align: left;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+}
+
+.subtitle {
+  font-style: normal;
+  font-weight: lighter;
+  font-size: 25px;
+}
+
+.btn-primary:hover {
+  color: #fff !important;
+  background-color:rgb(47, 36, 109) !important;
+  border-color:rgb(47, 36, 109) !important;
+}
+
+.btn-primary {
+  font-weight: bold !important;
+  color: #fff !important;
+  background-color:rgba(62,48,142,1) !important;
+  border-color:rgba(62,48,142,1) !important;
+}
+
+.btn {
+  padding: 0.8rem 1rem !important;
+}
+
+input[type=text] {
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.left_field{
+  max-width:20rem;
+}
+
+.right_field{
+  max-width:20rem;
+}
+
+.hidden {
+  display:none;
+}
