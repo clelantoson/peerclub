@@ -1,9 +1,8 @@
 class Group < ApplicationRecord
   belongs_to :user
-  has_many :subscriptions
+  has_many :subscriptions, dependent: :delete_all
   has_many :users, through: :subscriptions
-  has_many :comments
-
+  has_many :comments, dependent: :delete_all
   after_create :create_group_to_admin_email
   after_create :user_create_group_to_grp_admin_email
 

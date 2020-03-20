@@ -79,6 +79,19 @@ class GroupsController < ApplicationController
     end
   end
 
+
+  # def destroy
+  #   @group_sub = Subscription.where(group_id:@group.id)
+  #   @comment = Comment.where(comment_id:@comment.id)
+
+  #     @group.destroy
+  #   respond_to do |format|
+  #       format.html { redirect_to destroy_url, flash: { success:'Group was successfully destroyed.' }}
+  #       format.json { head :no_content }
+  #   end
+  # end
+ 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_group

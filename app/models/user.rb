@@ -4,10 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :groups
-  has_many :subscriptions
-  has_many :comments
-  has_one_attached :avatar
+  has_many :groups, dependent: :delete_all
+  has_many :subscriptions, dependent: :delete_all
+  has_many :comments, dependent: :delete_all
+  has_one_attached :avatar, dependent: :delete_all
   after_create :welcome_to_user_email
   after_create :new_user_register_to_admin_email
 
