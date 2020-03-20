@@ -8,7 +8,7 @@
 <div class="container">
     <h2><strong><%= @group.title %></strong></h2>
     <p>
-    <strong>Créer par : <%= @group.user.first_name %></strong> - <%= @group_subs.count %> / <%= @group.max_attendees %> place<% if @group.max_attendees > 1 %>s<%end%>.
+    <strong>Créer par : <%= @group.user.first_name %></strong> - <%= @group_subs.count %> / <%= @group.max_attendees %> place<%unless @group.max_attendees.nil?%><% if (@group.max_attendees > 1) %>s<%end%><%end%>.
     <br>
     Début : <%= @group.starting_date %>
     <br>
@@ -22,7 +22,9 @@
 
  
  <%=@group_subs.count %>
+ <%unless @group.max_attendees.nil?%>
   <% if (@group_subs.count < @group.max_attendees) || (@user_sub == true) %>
+  <%end%> 
     
     <% if @user_sub == true %>
       <%= link_to "Leave group", {:controller => "subscriptions", :action => 'destroy', :group_id => @group.id}, class: "btn-lg btn-info", method: :delete %>
@@ -33,7 +35,11 @@
 
   <%else%>
     <span class="btn-lg btn-info">Complet</span>
+ <%unless @group.max_attendees.nil?%>
+
   <%end%> 
+  <%end%> 
+
 
   <br>
   <br>
