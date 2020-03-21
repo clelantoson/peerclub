@@ -173,7 +173,12 @@ city: Faker::Nation.capital_city,
 udemy_url_img: "https://i.udemycdn.com/course/240x135/1151632_de9b.jpg")
 puts "Group 6 created"
 
-
+user1.avatar.attach(io: File.open('app/assets/images/1.png'), filename: '1.png', content_type: 'image/png')
+user2.avatar.attach(io: File.open('app/assets/images/1.png'), filename: '1.png', content_type: 'image/png')
+user3.avatar.attach(io: File.open('app/assets/images/1.png'), filename: '1.png', content_type: 'image/png')
+user4.avatar.attach(io: File.open('app/assets/images/1.png'), filename: '1.png', content_type: 'image/png')
+user5.avatar.attach(io: File.open('app/assets/images/1.png'), filename: '1.png', content_type: 'image/png')
+user6.avatar.attach(io: File.open('app/assets/images/1.png'), filename: '1.png', content_type: 'image/png')
 
 50.times do
   Subscription.create(user:User.all.sample, group_id:Group.all.sample.id)
