@@ -14,18 +14,18 @@ Subscription.destroy_all
 puts 'Subs destroyed'
 
 user1 = User.create(
-  email: Faker::Internet.email ,
-  password: Faker::Number.number(digits: 10),
-  first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name, 
+  email: "gt.thibaut@gmail.com",
+  password: "123456",
+  first_name: "Thibaut",
+  last_name: "Gallice", 
   description: "I'm cute and i know it. I love cakes and carrots", 
-  date_of_birth: Faker::Date.birthday(min_age: 18, max_age: 65), 
-  job: Faker::Job.title
+  date_of_birth: Faker::Date.birthday(min_age: 30, max_age: 30), 
+  job: "CEO at Peerclub"
 )
 
 puts "User 1 created"
 
-user2 =User.create(
+user4 =User.create(
   email: Faker::Internet.email,
   password: Faker::Number.number(digits: 10),
   first_name: Faker::Name.first_name,
@@ -39,23 +39,23 @@ puts "User 2 created"
 user3 =User.create(
   email: Faker::Internet.email,
   password: Faker::Number.number(digits: 10),
-  first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name,
+  first_name: "Camille",
+  last_name: "Le Lan-Toson",
   description: "Hello, i'm here to learn everything, im very intellectual.", 
-  date_of_birth: Faker::Date.birthday(min_age: 18, max_age: 65), 
-  job: Faker::Job.title
+  date_of_birth: Faker::Date.birthday(min_age: 24, max_age: 24), 
+  job: "CEO at Peerclub"
 )
 puts "User 3 created"
 
 
-user4 =User.create(
+user2 =User.create(
   email: Faker::Internet.email,
   password: Faker::Number.number(digits: 10),
-  first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name,
+  first_name: "Enzo",
+  last_name: "La Posta",
   description: "Hello, i'm here to learn everything, im very intellectual.", 
-  date_of_birth: Faker::Date.birthday(min_age: 18, max_age: 65), 
-  job: Faker::Job.title
+  date_of_birth: Faker::Date.birthday(min_age: 28, max_age: 28), 
+  job: "CEO at Peerclub"
 )
 puts "User 4 created"
 
@@ -173,18 +173,29 @@ city: Faker::Nation.capital_city,
 udemy_url_img: "https://i.udemycdn.com/course/240x135/1151632_de9b.jpg")
 puts "Group 6 created"
 
-user1.avatar.attach(io: File.open('app/assets/images/1.png'), filename: '1.png', content_type: 'image/png')
-user2.avatar.attach(io: File.open('app/assets/images/2.png'), filename: '2.png', content_type: 'image/png')
+user1.avatar.attach(io: File.open('app/assets/images/1.jpeg'), filename: '1.jpeg', content_type: 'image/jpeg')
+user2.avatar.attach(io: File.open('app/assets/images/2.jpeg'), filename: '2.jpeg', content_type: 'image/jpeg')
 user3.avatar.attach(io: File.open('app/assets/images/3.png'), filename: '3.png', content_type: 'image/png')
-user4.avatar.attach(io: File.open('app/assets/images/4.jpg'), filename: '4.png', content_type: 'image/jpg')
-user5.avatar.attach(io: File.open('app/assets/images/5.ĵpg'), filename: '5.png', content_type: 'image/jpg')
-user6.avatar.attach(io: File.open('app/assets/images/6.jpg'), filename: '6.png', content_type: 'image/jpg')
+user4.avatar.attach(io: File.open('app/assets/images/4.jpg'), filename: '4.jpg', content_type: 'image/jpg')
+user5.avatar.attach(io: File.open('app/assets/images/5.jpg'), filename: '5.jpg', content_type: 'image/jpg')
+user6.avatar.attach(io: File.open('app/assets/images/6.jpg'), filename: '6.jpg', content_type: 'image/jpg')
 
 i = 0
+y = 0
+users = User.all
+groups = Group.all
 while i < 6 do
   while y < 6 do
-    Subscription.create(user:User.all[i], group_id:Group.all[y])
+    s = Subscription.new(user:users[i], group_id:groups[y].id)
+    if s.save
+      puts "Sub OK"
+    else
+      puts "=============================="
+      puts s.errors.full_messages
+      puts "=============================="
+    end
     y += 1
   end
+  y = 0
   i += 1
 end
