@@ -82,12 +82,7 @@ user6 =User.create(
 )
 puts "User 6 created"
 
-user1.avatar.attach(io: File.open('app/assets/images/1.png'), filename: '1.png', content_type: 'image/png')
-user2.avatar.attach(io: File.open('app/assets/images/1.png'), filename: '1.png', content_type: 'image/png')
-user3.avatar.attach(io: File.open('app/assets/images/1.png'), filename: '1.png', content_type: 'image/png')
-user4.avatar.attach(io: File.open('app/assets/images/1.png'), filename: '1.png', content_type: 'image/png')
-user5.avatar.attach(io: File.open('app/assets/images/1.png'), filename: '1.png', content_type: 'image/png')
-user6.avatar.attach(io: File.open('app/assets/images/1.png'), filename: '1.png', content_type: 'image/png')
+
 
 
 Group.create(user: user1, 
