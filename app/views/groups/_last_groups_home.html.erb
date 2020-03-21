@@ -37,14 +37,16 @@
                 </p></small>
                 <div class="avatar-zone">
                 <% i = 0 %>
+                <%unless @group_subs.nil? %>
                 <% while (i < 5) do %>
                     <span>
-                    <% if @group_subs[i].user.avatar.attached? %>
-                      <%= link_to image_tag(@group_subs[i].user.avatar, style:"width:30px; height:30px", class:"rounded-circle mt-2"), user_path(@group_subs[i].user) %>
-                    <%end%>
+                    
+                      <%= link_to image_tag(@group_subs[i].user.avatar, style:"width:30px; height:30px", class:"rounded-circle mt-2"), user_path(@group_subs[i].user) if @group_subs[i].user.avatar.attached? %>
+                      
                     </span>
                   <% i += 1 %>
                 <% end %>
+                <%end%>
                 </div>
             </div>
         </div>
