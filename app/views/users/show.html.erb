@@ -1,91 +1,94 @@
-
 <div class="container">
   <div class="row">
     <div class="col-sm-4">
-     <div class="card" style="width: 18rem;">
-       <div class="text-center">
-         <%= image_tag @user.avatar, style:"max-width:100px", class: "rounded-circle" if @user.avatar.attached? %> 
-       </div>
+      <div class="card" style="width: 18rem;">
+        <div class="text-center">
+          <%= image_tag @user.avatar, style:"max-width:100px", class: "rounded-circle" if @user.avatar.attached? %>
+        </div>
         <div class="card-body">
-        <h1 class="card-title"><%= @user.first_name %> <%= @user.last_name %></h1>
-        <p class="card-text">
+          <h1 class="card-title"><%= @user.first_name %> <%= @user.last_name %></h1>
+          <p class="card-text">
             <ul>
               <li class="list-unstyled"> Job : <%= @user.job %></li>
-                  <li class="list-unstyled"> Email : <%= @user.email %></li>
-                  <hr>
-              <li class="list-unstyled"> Description : <%=@user.description %></li> 
-              <li class="list-unstyled"> Birthday : <%= @user.date_of_birth %></li> 
+              <li class="list-unstyled"> Email : <%= @user.email %></li>
+              <hr>
+              <li class="list-unstyled"> Description : <%=@user.description %></li>
+              <li class="list-unstyled"> Birthday : <%= @user.date_of_birth %></li>
             </ul>
           </p>
         </div>
       </div>
 
-
       <h3>Change avatar ?</h3>
-        <%= form_tag avatars_path(@user), multipart: true do %>
-          <%= file_field_tag :avatar, onchange:"myFunction()" %>
-          <%= submit_tag "Update", disabled:true, id: 'submit_avatar' %>
-        <% end %>
+      <%= form_tag avatars_path(@user), multipart: true do %>
+      <%= file_field_tag :avatar, onchange:"myFunction()" %>
+      <%= submit_tag "Update", disabled:true, id: 'submit_avatar' %>
+      <% end %>
     </div>
 
     <div class="col-sm-8 row">
-      <div class="col-sm-4 mx-auto">
+      <div class="col-sm-4 mx-auto my-auto">
         <div class="card" style="width: 18rem;">
           <div class="card-body">
             <h2 class="card-title">Groups created</h2>
             <p class="card-text">
               <% @user.groups.each do |group|%>
               <ul>
-                <li class="list-unstyled"><%=group.title%></li> 
-                <li class="list-unstyled"><%=group.starting_date%></li> 
-                <li class="list-unstyled">  <%=group.meeting_point%></li> 
+                <li class="list-unstyled"><%=group.title%></li>
+                <li class="list-unstyled"><%=group.starting_date%></li>
+                <li class="list-unstyled"> <%=group.meeting_point%></li>
                 <% end %>
-                  <%if @user.groups.empty?%>
-                  <li class="list-unstyled"> <p>No group created yet</p></li> 
+                <%if @user.groups.empty?%>
+                <li class="list-unstyled">
+                  <p>No group created yet</p>
+                </li>
                 <% end %>
               </ul>
             </p>
-            </div>
-          </div>
-        </div>
-
-      <div class="col-sm-4 mx-auto">
-        <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h2 class="card-title">Groups subscribed</h2>
-          <p class="card-text">
-          <%@user.subscriptions.each do |s|%>
-          <ul>
-            <li class="list-unstyled"><%=s.group.title%></li> 
-            <li class="list-unstyled"><%=s.group.starting_date%></li> 
-            <li class="list-unstyled">  <%=s.group.meeting_point%></li> 
-            <% end %>
-              <%if @user.subscriptions.empty?%>
-              <li class="list-unstyled"> <p>Not registered to a group yet</p></li> 
-            <% end %>
-            </ul>
-          </p>
           </div>
         </div>
       </div>
+
+      <div class="col-sm-4 mx-auto my-auto">
+        <h2 class="card-title">Groups subscribed</h2>
+        <%@user.subscriptions.each do |s|%>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <p class="card-text">
+              <ul>
+                <li class="list-unstyled"><%=s.group.title%></li>
+                <li class="list-unstyled"><%=s.group.starting_date%></li>
+                <li class="list-unstyled"> <%=s.group.meeting_point%></li>
+
+                <%if @user.subscriptions.empty?%>
+                <li class="list-unstyled">
+                  <p>Not registered to a group yet</p>
+                </li>
+                <% end %>
+              </ul>
+            </p>
+          </div>
+        </div>
+        <% end %>
+      </div>
     </div>
- 
+  </div>
+</div>
+
 
 <script>
-function myFunction(){
-  var x = document.getElementById("avatar");
-  var s = document.getElementById("submit_avatar")
-  var txt = "";
-  if ('files' in x) {
-    if (x.files.length == 0) {
-      txt = "Select one or more files.";
-      s.setAttribute('disabled','true');
-    } else {
-      s.removeAttribute('disabled');
+  function myFunction() {
+    var x = document.getElementById("avatar");
+    var s = document.getElementById("submit_avatar")
+    var txt = "";
+    if ('files' in x) {
+      if (x.files.length == 0) {
+        txt = "Select one or more files.";
+        s.setAttribute('disabled', 'true');
+      } else {
+        s.removeAttribute('disabled');
+      }
     }
-  } 
-  document.getElementById("text").innerHTML = txt;
-}
+    document.getElementById("text").innerHTML = txt;
+  }
 </script>
-
-
