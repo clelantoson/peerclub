@@ -7,16 +7,23 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'false' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'false' %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+    </style>
   </head>
 
   <body>
-
+       <% flash.each do |type, msg| %>
+        <div class="alert alert-danger">
+          <%= msg %>
+        </div>
+        <% end %>
 
   <!-- start navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <nav class="navbar navbar-shadow navbar-expand-lg navbar-light bg-white fixed-top">
     <div class="container">
 
-      <%= link_to image_tag("https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg",  style: "max-height: 50px", alt: "logo"), root_path,  class:"navbar-brand" %>
+      <%= link_to image_tag("logo.png",  style: "max-width: 150px", alt: "logo"), root_path,  class:"navbar-brand" %>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -28,6 +35,10 @@
             <%= link_to "Home", root_path, class:"nav-link" %>
             <span class="sr-only">(current)</span>
           </li>
+          <li class="nav-item active">
+            <%= link_to "All groups", groups_path, class:"nav-link" %>
+            <span class="sr-only">(current)</span>
+          </li>
 
          <!-- DROPDOWN LOGIN -->
           <% if user_signed_in? %>
@@ -37,17 +48,12 @@
             Profile
             </a>
 
-            <%= link_to "My Profile", user_path(current_user) , class:"dropdown-item" %>
+            
 
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%
-=begin%>
- <%= link_to "My Profile", user_path(current_user) , class:"dropdown-item" %>
-<%
-=end%>
-              <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
-              Voici ton email : <%= current_user.email %>
-              <%= link_to "Edit email / password", edit_user_registration_path %>
+              <%= link_to "Mon compte", user_path(current_user) , class:"dropdown-item" %>
+              <%= link_to "Edit email / password", edit_user_registration_path, class:"dropdown-item"  %>
+              <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
             </div>
           </li>
         </ul>
@@ -67,10 +73,7 @@
     </nav>
   <!-- end navbar -->
 
-    <%=flash[:danger]%>
-    
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+
     <%= yield %>
     <script src="https://kit.fontawesome.com/b1724147a0.js" crossorigin="anonymous"></script>
   </body>

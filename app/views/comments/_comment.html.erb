@@ -11,13 +11,7 @@
             <b> <%= comment.user.first_name %></b>
           </div>
           <h6 class="text-muted time"><%=comment.created_at%></h6>
-          <%
-=begin%>
- <% if current_user == comment.user %>
-          <span style="color:#dc3545 !important;"><b><%= link_to "Delete", group_comment_path(comment.group_id, comment.id), method: :delete %></b></span>
-       
-<%
-=end%>
+          
         </div>
       </div>
       <div class="post-description">
@@ -33,19 +27,4 @@
 <p>Il n'y a pas de commentaires.</p>
 <% end %>
 ​
-<%
-=begin%>
-​ <% @group.comments.each_with_index do |comment, index| %>
-<div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
-  <div class="card-header"> <%= comment.user.first_name %> </div>
-  <p class="card-text"> <%= comment.content %><br />
-  </p>
-</div>
-</div>
-<% end %>
 
-<%if @group.comments.empty?%>
-<p>Il n'y a pas de commentaires.</p>
-<% end %>
-<%
-=end%>
