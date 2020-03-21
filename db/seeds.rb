@@ -174,12 +174,17 @@ udemy_url_img: "https://i.udemycdn.com/course/240x135/1151632_de9b.jpg")
 puts "Group 6 created"
 
 user1.avatar.attach(io: File.open('app/assets/images/1.png'), filename: '1.png', content_type: 'image/png')
-user2.avatar.attach(io: File.open('app/assets/images/1.png'), filename: '1.png', content_type: 'image/png')
-user3.avatar.attach(io: File.open('app/assets/images/1.png'), filename: '1.png', content_type: 'image/png')
-user4.avatar.attach(io: File.open('app/assets/images/1.png'), filename: '1.png', content_type: 'image/png')
-user5.avatar.attach(io: File.open('app/assets/images/1.png'), filename: '1.png', content_type: 'image/png')
-user6.avatar.attach(io: File.open('app/assets/images/1.png'), filename: '1.png', content_type: 'image/png')
+user2.avatar.attach(io: File.open('app/assets/images/2.png'), filename: '2.png', content_type: 'image/png')
+user3.avatar.attach(io: File.open('app/assets/images/3.png'), filename: '3.png', content_type: 'image/png')
+user4.avatar.attach(io: File.open('app/assets/images/4.jpg'), filename: '4.png', content_type: 'image/jpg')
+user5.avatar.attach(io: File.open('app/assets/images/5.ĵpg'), filename: '5.png', content_type: 'image/jpg')
+user6.avatar.attach(io: File.open('app/assets/images/6.jpg'), filename: '6.png', content_type: 'image/jpg')
 
-50.times do
-  Subscription.create(user:User.all.sample, group_id:Group.all.sample.id)
+i = 0
+while i < 6 do
+  while y < 6 do
+    Subscription.create(user:User.all[i], group_id:Group.all[y])
+    y += 1
+  end
+  i += 1
 end
