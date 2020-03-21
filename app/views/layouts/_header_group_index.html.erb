@@ -1,0 +1,15 @@
+<div class="container-fluid head">
+  <div class="header-head mx-auto col-s-12 text-center">
+  <span class="punchline-head">Find a team you love.</span><br>
+    
+  </div>
+</div>
+<div class="container text-center searchbar">
+        <%= form_tag("", method: "get") do %>
+        <%= label_tag(:city, :city, class:"hidden") %>
+        <%= text_field_tag(:city, @city_query, class:"left_field") %>
+        <%= label_tag(:search, :search, class:"hidden") %>
+        <%= text_field_tag(:search, @search_query, class:"right_field") %>
+        <%= submit_tag("Rechercher", class:"btn btn-primary") %>
+    <% end %>
+  </div>
