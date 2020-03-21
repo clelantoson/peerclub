@@ -24,6 +24,12 @@
 
  <% end %>
 <!--comment-->
+
+<% flash.each do |type, msg| %>
+        <div class="alert alert-danger">
+          <%= msg %>
+        </div>
+        <% end %>
         
 
   <%= render "layouts/navbar" %>

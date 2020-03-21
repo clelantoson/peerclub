@@ -18,16 +18,16 @@ class SubscriptionsController < ApplicationController
     @sub = Subscription.new(user:@user,group_id:@group.id)
 
     # if Subscription.where(user:@user,group_id:@group.id).exists?
-
-      if @sub.save
-        redirect_to group_path(@sub.group_id)
+      unless @group.users.include?(@user)
+        @group.users << @user 
+        redirect_to group_path(@sub.group_id), flash: { success:'Good ! You just sub' }
       else
         puts "=============================="
         puts "=============================="
         puts @sub.errors.full_messages
         puts "=============================="
         puts "=============================="
-        redirect_to group_path(@sub.group_id)
+        redirect_to group_path(@sub.group_id), flash: { fail:'You already sub to this group' }
       end
 
     # else 
@@ -50,7 +50,7 @@ class SubscriptionsController < ApplicationController
     @user = current_user
     @sub = Subscription.find_by(user:@user,group_id:@group.id)
     @sub.destroy
-    redirect_to group_path(@sub.group_id)
+    redirect_to group_path(@sub.group_id), flash: { success:'You just un-sub to this group :)' }
     
 
   end

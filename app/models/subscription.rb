@@ -1,6 +1,7 @@
 class Subscription < ApplicationRecord
   belongs_to :user
   belongs_to :group
+  
 
   after_create :new_user_subscribe_a_group_to_admin_email
   after_create :new_user_subscribe_alert_to_grp_users_email
