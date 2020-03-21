@@ -39,7 +39,7 @@
                 <% i = 0 %>
                 <% while (i < 5) do %>
                     <span>
-                      <%= link_to image_tag(@group_subs[i].user.avatar, style:"width:30px; height:30px", class:"rounded-circle mt-2"), user_path(@group_subs[i].user) unless @group_subs[i].nil? %>
+                      <%= link_to image_tag(@group_subs[i].user.avatar, style:"width:30px; height:30px", class:"rounded-circle mt-2"), user_path(@group_subs[i].user) if @group_subs[i].user.avatar.attached? %>
                     </span>
                   <% i += 1 %>
                 <% end %>
