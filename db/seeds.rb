@@ -10,6 +10,8 @@ User.destroy_all
 puts "Users destroyed"
 Group.destroy_all
 puts 'Groups destroyed'
+Subscription.destroy_all
+puts 'Subs destroyed'
 
 user1 = User.create(
   email: Faker::Internet.email ,
