@@ -10,10 +10,77 @@ body {
   box-shadow: 0px -2px 15px 1px rgba(0,0,0,0.30);
 }
 
+.card-shadow {
+  -webkit-box-shadow: 0px -2px 15px 1px rgba(0,0,0,0.15); 
+  box-shadow: 0px -2px 15px 1px rgba(0,0,0,0.15);
+}
+
+.card {
+  border:0px !important;
+  height: 93% !important;
+}
+
+.avatar-zone{
+  min-height: 40px;
+}
+
+.card-title {
+  font-size:1.3rem !important;
+  margin-bottom: 0.25rem !important;
+}
+
+h2 {
+  font-weight: bold !important;
+  font-size: 2.3rem !important;
+  color: rgba(75,75,75,1) !important;
+}
+
+.sub-section {
+  font-weight: lighter;
+  font-size: 1rem;
+  color: rgba(75,75,75,1);
+}
+
+.card-block {
+  padding: 1rem;
+  padding-top: 0.5rem;
+
+}
+
+.card-block a {
+    text-decoration: none;
+  color:#000;
+}
+
+.card-block a:hover {
+  text-decoration: none;
+  color:rgba(62,48,142,1);
+}
+
 .jumbo {
   background-image:url("jumbo_bg.png");
   background-size: cover;
-  min-height: 400px;
+  min-height: 500px;
+}
+
+.head {
+  background-image:url("jumbo_bg.png");
+  background-size: cover;
+  min-height: 200px;
+}
+
+.searchbar{
+  margin-top: -33px;
+}
+
+.text-green {
+  color: green;
+}
+.text-orange {
+  color: orange;
+}
+.text-red {
+  color: red;
 }
 
 .container-why {
@@ -48,7 +115,7 @@ body {
 
 .jumbo-head{
 
-  padding-top:4rem;
+  padding-top:8rem;
   max-width: 1140px;
   filter: drop-shadow(3px 3px 4px rgba(0, 0, 0, 0.471));
   color: rgba(255,255,255,1);
@@ -62,6 +129,20 @@ body {
   font-size: 48px;
 }
 
+.header-head{
+  padding-top:5rem;
+  max-width: 1140px;
+  filter: drop-shadow(3px 3px 4px rgba(0, 0, 0, 0.471));
+  color: rgba(255,255,255,1);
+}
+
+.punchline-head {
+  line-height: 67px;
+  text-align: left;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 38px;
+}
 .subtitle {
   font-style: normal;
   font-weight: lighter;
@@ -79,10 +160,15 @@ body {
   color: #fff !important;
   background-color:rgba(62,48,142,1) !important;
   border-color:rgba(62,48,142,1) !important;
+  text-transform: uppercase;
 }
 
 .btn {
   padding: 0.8rem 1rem !important;
+}
+
+.interline-cta {
+  margin-top: -72px;
 }
 
 input[type=text] {
