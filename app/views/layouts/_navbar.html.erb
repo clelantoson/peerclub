@@ -1,0 +1,64 @@
+<!-- start navbar -->
+  <nav class="navbar navbar-shadow navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+
+      <%= link_to image_tag("logo.png",  style: "max-width: 150px", alt: "logo"), root_path,  class:"navbar-brand" %>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item nav-text pr-4">
+            <%= link_to "home", root_path, class:"nav-link" %>
+            <span class="sr-only">(current)</span>
+          </li>
+          
+ 
+         <!-- DROPDOWN LOGIN -->
+          <% if user_signed_in? %>
+          <li class="nav-item nav-btn pr-3">
+            <%= link_to "join a group", groups_path, class:"btn btn-outline-primary" %>
+            <span class="sr-only">(current)</span>
+          </li>
+
+          <li class="nav-item dropdown">
+            <!--<a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Profile
+            </a>-->
+            <%= link_to image_tag(current_user.avatar, style:"width:45px; height:45px", class:"rounded-circle"), user_path(current_user), { :class => 'nav-link dropdown-toggle dropdown-toggle-avatar', :id => 'navbarDropdown', :role => 'button', 'data-toggle' => 'dropdown', 'aria-haspopup' => 'true', 'aria-expanded' => 'false' } if current_user.avatar.attached? %>
+
+            
+
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to "My account", user_path(current_user) , class:"dropdown-item" %>
+              <%= link_to "Edit infos", edit_user_registration_path, class:"dropdown-item"  %>
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
+            </div>
+          </li>
+        <% else %>
+          <!-- DROPDOWN NOT LOGIN -->
+          <li class="nav-item nav-text pr-4">
+            <%= link_to "view groups", groups_path, class:"nav-link" %>
+            <span class="sr-only">(current)</span>
+          </li>
+
+          <li class="nav-item nav-btn pr-3">
+            <%= link_to "enroll now", new_user_registration_path, class:"btn btn-primary" %>
+            <span class="sr-only">(current)</span>
+          </li>
+
+          <li class="nav-item nav-btn">
+            <%= link_to "login", new_user_session_path, class:"btn btn-outline-primary" %>
+            <span class="sr-only">(current)</span>
+          </li>
+          <% end %>
+          </ul>
+      </div>
+
+
+    </nav>
+     
+    
+  <!-- end navbar -->

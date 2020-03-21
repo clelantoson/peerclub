@@ -13,69 +13,26 @@
   </head>
 
   <body>
+  <!--comment-->
+  <% if false %>
+               
        <% flash.each do |type, msg| %>
         <div class="alert alert-danger">
           <%= msg %>
         </div>
         <% end %>
 
-  <!-- start navbar -->
-  <nav class="navbar navbar-shadow navbar-expand-lg navbar-light bg-white fixed-top">
-    <div class="container">
+ <% end %>
+<!--comment-->
+        
 
-      <%= link_to image_tag("logo.png",  style: "max-width: 150px", alt: "logo"), root_path,  class:"navbar-brand" %>
+  <%= render "layouts/navbar" %>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <%= link_to "Home", root_path, class:"nav-link" %>
-            <span class="sr-only">(current)</span>
-          </li>
-          <li class="nav-item active">
-            <%= link_to "All groups", groups_path, class:"nav-link" %>
-            <span class="sr-only">(current)</span>
-          </li>
-
-         <!-- DROPDOWN LOGIN -->
-          <% if user_signed_in? %>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Profile
-            </a>
-
-            
-
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to "Mon compte", user_path(current_user) , class:"dropdown-item" %>
-              <%= link_to "Edit email / password", edit_user_registration_path, class:"dropdown-item"  %>
-              <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
-            </div>
-          </li>
-        </ul>
-        <% else %>
-          <!-- DROPDOWN NOT LOGIN -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Start here
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to "Register", new_user_registration_path,class:"dropdown-item" %>
-              <%= link_to "Login", new_user_session_path,class:"dropdown-item" %>
-          </li>
-          <% end %>
-      </div>
-
-    </nav>
-  <!-- end navbar -->
-
-
+ 
     <%= yield %>
     <script src="https://kit.fontawesome.com/b1724147a0.js" crossorigin="anonymous"></script>
+
+
   </body>
 
 </html>
