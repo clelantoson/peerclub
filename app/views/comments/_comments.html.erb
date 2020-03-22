@@ -32,7 +32,10 @@
                   <%end%>
 										
 									</div>
+                  <% if user_signed_in? %>
 									<%= render "comments/form" %>
+                <%end%>
+
 								</div>
 							</div>
 						</div>

@@ -12,7 +12,7 @@
 							<div class="metas-course">
 								<div class="title-course">
 									<h2>
-									<%= @group.title %> <small><%= link_to 'Edit', edit_group_path(@group) if current_user == @group.user %></small>
+									<%= @group.title %> <small style="font-size:13px"><%= link_to 'Edit', edit_group_path(@group) if current_user == @group.user %></small>
 									<% if (@group_subs.length > 0) && (@group_subs.length < @group.max_attendees) && (@group.starting_date <= Time.now) %>   
                     <span class="custom-badge-ilh green">Opening to join</span>
                   <% elsif (@group_subs.length == nil?) && (@group.starting_date <= Time.now) %>   
