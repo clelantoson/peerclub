@@ -42,7 +42,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
-        format.html { redirect_to edit_group_path(@group), flash: { success:'Group was successfully created.' }}
+        format.html { redirect_to edit_group_path(@group), flash: { success:'Your group was successfully created.' }}
         format.json { render :show, status: :created, location: @group }
       else
         format.html { render :new }
@@ -56,7 +56,7 @@ class GroupsController < ApplicationController
   def update
     respond_to do |format|
       if @group.update(group_params)
-        format.html { redirect_to @group, flash: { success:'Group was successfully updated.' }}
+        format.html { redirect_to @group, flash: { success:'Your group was successfully updated.' }}
         format.json { render :show, status: :ok, location: @group }
       else
         format.html { render :edit }
@@ -70,7 +70,7 @@ class GroupsController < ApplicationController
   def destroy
     @group.destroy
     respond_to do |format|
-      format.html { redirect_to groups_url, flash: { success:'Group was successfully destroyed.' }}
+      format.html { redirect_to groups_path, flash: { success:'Group was successfully destroyed.' }}
       format.json { head :no_content }
     end
   end
@@ -91,7 +91,8 @@ class GroupsController < ApplicationController
       if current_user == @group.user
         return true 
       else 
-        redirect_to groups_path, alert: "You are not admin of this group"
+        # redirect_to groups_path, alert: "You are not admin of this group"
+        redirect_to groups_path, flash: { info:'You are not admin of this group' }
       end
     end
 end

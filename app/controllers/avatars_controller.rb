@@ -3,12 +3,8 @@ class AvatarsController < ApplicationController
     @user = current_user
     @user.avatar.attach(params[:avatar])
 
-    puts "========================="
-    puts "========================="
-    puts params[:avatar]
-    puts "========================="
-    puts "========================="
-    redirect_to(user_path(@user))
+    # redirect_to(user_path(@user))
+    redirect_to user_path(@user), flash: { success:'Your profile pic has been set successfully :)' }
   end
 
 end

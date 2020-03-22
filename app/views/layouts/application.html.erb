@@ -6,16 +6,16 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'false' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'false' %>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <%# <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> %>
     <style>
       @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
     </style>
   </head>
 
   <body>
-  <!--comment-->
-  <% if false %>
-               
+
+   <!--comment-->
+  <% if false %>              
        <% flash.each do |type, msg| %>
         <div class="alert alert-danger">
           <%= msg %>
@@ -25,16 +25,10 @@
  <% end %>
 <!--comment-->
 
-<% flash.each do |type, msg| %>
-        <div class="alert alert-danger">
-          <%= msg %>
-        </div>
-        <% end %>
-        
+<%= render :partial => 'layouts/flash_messages', :flash => flash %>
+<%= render "layouts/navbar" %> %>
 
-  <%= render "layouts/navbar" %>
 
- 
     <%= yield %>
     <script src="https://kit.fontawesome.com/b1724147a0.js" crossorigin="anonymous"></script>
 

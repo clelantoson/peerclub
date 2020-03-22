@@ -103,6 +103,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.9.0)
+      devise (>= 4.7.1)
     dotenv (2.7.5)
     dotenv-rails (2.7.5)
       dotenv (= 2.7.5)
@@ -237,6 +239,8 @@ GEM
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
+    toastr-rails (1.0.3)
+      railties (>= 3.1.0)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -270,6 +274,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  devise-i18n
   dotenv-rails
   faker
   faraday
@@ -288,6 +293,7 @@ DEPENDENCIES
   sendgrid-ruby
   spring
   spring-watcher-listen (~> 2.0.0)
+  toastr-rails
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)

@@ -13,6 +13,9 @@
  *= require main
  *= require bootstrap
  *= require font-awesome
+ *= require toastr
+
 
  */
 @import "groups/show";
+@import "toastr";

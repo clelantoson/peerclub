@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :groups do
     resources :subscriptions
   end
-  devise_for :users, controllers: { registrations: 'users/registrations' }
+  devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
 
   resources :users, only: [:show]
   resources :comments, only: [:new, :create, :show, :destroy]

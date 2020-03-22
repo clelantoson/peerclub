@@ -27,6 +27,8 @@ gem "font-awesome-rails"
 gem 'faraday'
 gem 'activestorage'
 gem "aws-sdk-s3", require: false
+gem 'toastr-rails'
+gem 'devise-i18n'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(content: params['content'], user: current_user,  group_id: params['group_id'].to_i)
     if @comment.save
-      redirect_to group_path(@comment.group_id), flash: { success:'Votre commentaire a bien été créé' }
+      redirect_to group_path(@comment.group_id), flash: { success:'Your comment has been posted successfully !' }
     else
       redirect_back(fallback_location: root_path)
       @error = @comment.errors.full_messages
@@ -44,7 +44,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Group.find(params[:id])
     @comment.destroy
-    redirect_to @comment
+    redirect_to group_path(@comment.group_id), flash: { info:'Your comment has been deleted successfully !' }
   end
 
  
