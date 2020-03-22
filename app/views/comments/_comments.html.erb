@@ -1,0 +1,43 @@
+<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="contenu-tabs-ilh">
+									<div class="replies-list">
+                  
+
+<%if @group.comments.empty?%>
+<p>No comment yet.</p>
+<% end %>
+
+                  <% @group.comments.each_with_index do |comment, index| %>
+										<!--- item reply -->
+										<div class="reply-ilh">
+											<div>
+												<div class="photo-ilh">
+													<%= image_tag comment.user.avatar, class:"img-fluid" %>
+												</div>
+											</div>
+											<div class="comment-ilh">
+												<div class="heading-content">
+													<span><%= comment.user.first_name %> <%= comment.user.last_name %></span>
+													<span>Posted at <%=comment.created_at%></span>
+												</div>
+												<div class="body-comment-ilh">
+													<%= comment.content %>
+												</div>
+											
+											</div>
+										</div>
+										<!-- end reply -->
+                  <%end%>
+										
+									</div>
+									<%= render "comments/form" %>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+​
+

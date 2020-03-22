@@ -1,4 +1,19 @@
-   <%=@udemy_course['title']%><br>
-   <%=@udemy_course['price']%><br>
-   <%=@udemy_course['visible_instructors'].first['title']%><br>
-   <%= link_to "Plus d'infos", "https://www.udemy.com#{@udemy_course['url']}", class:'btn btn-primary'%><br>
+<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="contenu-tabs-ilh">
+									<div class="heading-ilh">
+										<h3>Learn <%=@udemy_course['title']%> with an awesome group.</h3>
+										<span class="metas-head-ilh">
+											<i class="fas fa-euro"></i> <%=@udemy_course['price'].delete "€"%>
+										</span>
+									</div>
+									<div class="body-tab-ilh">
+										<h5>Author : <%=@udemy_course['visible_instructors'].first['title']%></h5>
+										<h5 class="mt-3">More about the group :</h5><p><%= @group.description %></p>
+										<p class="mt-5"><%= link_to "Get the course", "https://www.udemy.com#{@udemy_course['url']}", class:'btn-custom mt-5 text-decoration-none'%></p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>   

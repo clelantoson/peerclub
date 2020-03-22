@@ -1,9 +1,20 @@
-
-<%= form_tag(comments_path, method: 'post', class: 'form-group') do %>
-  <%= hidden_field_tag(:group_id, @group.id) %>
-
-    <%= label_tag 'Content' %>
-    <%= text_area_tag 'content' %>
-    <br/> <br/>
-    <%= submit_tag "Submit", class:'btn btn-primary' %>
-  <% end %>
+<div class="reply-form-ilh">
+  <div class="form-table-ilh-reply">
+    <div>
+      <div class="photo-user-ilh">
+        <%= image_tag current_user.avatar, class:"img-fluid" unless current_user.avatar.nil? %>
+      </div>
+    </div>
+    <div>
+      <%= form_tag(comments_path, method: 'post', class: 'form-group add-reply-form-ilh') do %>
+        <div class="input-group">
+          <%= hidden_field_tag(:group_id, @group.id) %>
+          <%= text_area_tag 'content' %>
+        </div>
+        <div class="input-group">
+          <%= submit_tag "Post", class:'btn float-right' %>
+        </div>
+       <% end %>
+    </div>
+  </div>
+</div>
