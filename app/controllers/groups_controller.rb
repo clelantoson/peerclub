@@ -9,8 +9,10 @@ class GroupsController < ApplicationController
     @groups = Group.all
     @search_query = params[:search]
     @city_query = params[:city]
-    @groups.search_group(@search_query, @city_query)
+    
     binding.pry
+    @groups.search_group(@search_query, @city_query)
+  end
 
   # GET /groups/1.json
   def show
