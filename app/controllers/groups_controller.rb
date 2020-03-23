@@ -7,10 +7,11 @@ class GroupsController < ApplicationController
   # GET /groups.json
   def index
     @groups = Group.all
-  
-  end
+    @search_query = params[:search]
+    @city_query = params[:city]
+    @groups.search_group(@search_query, @city_query)
+    binding.pry
 
-  # GET /groups/1
   # GET /groups/1.json
   def show
     udemy = Udemy.new

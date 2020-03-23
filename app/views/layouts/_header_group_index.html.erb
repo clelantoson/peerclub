@@ -5,11 +5,21 @@
   </div>
 </div>
 <div class="container text-center searchbar">
-        <%= form_tag("", method: "get") do %>
+  <%= form_tag("", method: "get") do %>
+  <%= label_tag(:city, :city, class:"hidden") %>
+  <%= text_field_tag(:city, @city_query, placeholder:"Where are you ?", class:"left_field") %>
+
+  <%= label_tag(:search, :search, class:"hidden") %>
+  <%= text_field_tag(:search, @search_query,  placeholder:"What do you want to learn ?", class:"right_field") %>
+  <%= submit_tag("Rechercher", class:"btn btn-primary") %>
+<% end %>
+
+
+        <!-- <%= form_tag("", method: "get") do %>
         <%= label_tag(:city, :city, class:"hidden") %>
         <%= text_field_tag(:city, @city_query, class:"left_field") %>
         <%= label_tag(:search, :search, class:"hidden") %>
         <%= text_field_tag(:search, @search_query, class:"right_field") %>
         <%= submit_tag("Rechercher", class:"btn btn-primary") %>
-    <% end %>
+    <% end %> -->
   </div>
