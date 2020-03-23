@@ -23,12 +23,13 @@ class Group < ApplicationRecord
   # ========= END MAILER ========= 
   def self.search(search_query, city_query) 
     groups = Group.all
+    group_found = {}
     if search_query.present? 
-      groups = groups.select {|group| group["udemy_course_title"].downcase.include?(search_query.downcase) }
+      groups_found = groups.select {|group| group["udemy_course_title"].downcase.include?(search_query.downcase) }
     end
     if city_query.present?
-      groups = groups.select {|group| group["city"].downcase.include?(city_query.downcase) }
+      groups_found = groups.select {|group| group["city"].downcase.include?(city_query.downcase) }
     end
-    groups
+    groups_found
   end
 end
