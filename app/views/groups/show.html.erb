@@ -13,17 +13,15 @@
 								<div class="title-course">
 									<h2>
 									<%= @group.title %>
-									<% if (@group_subs.length > 0) && (@group_subs.length < @group.max_attendees) && (@group.starting_date <= Time.now) %>   
-                    <span class="custom-badge-ilh green">Opening to join</span>
-                  <% elsif (@group_subs.length == nil?) && (@group.starting_date <= Time.now) %>   
-                    <span class="custom-badge-ilh green">Opening to join</span>
-                  <% elsif (@group_subs.length == nil?) && (@group.starting_date >= Time.now) %>   
-                    <span class="custom-badge-ilh yellow">Start a <%= @group.starting_date %></span>
-                  <% elsif (@group_subs.length > 0) && (@group_subs.length < @group.max_attendees) && (@group.starting_date >= Time.now) %>   
-                    <span class="custom-badge-ilh yellow">Start at <%= @group.starting_date %></span>
-                  <% elsif (@group_subs.length > 0) && (@group_subs.length >= @group.max_attendees) %>   
-                    <span class="custom-badge-ilh red">Closed (full)</span>
-                  <% end %>
+									
+										<% if (@group_subs.length > 0) && (@group_subs.length < @group.max_attendees) && (@group.starting_date <= Time.now) %>   
+											<span class="custom-badge-ilh green">Opening to join</span>
+										<% elsif (@group_subs.length > 0) && (@group_subs.length < @group.max_attendees) && (@group.starting_date >= Time.now) %>   
+											<span class="custom-badge-ilh yellow">Start at <%= @group.starting_date %></span>
+										<% elsif (@group_subs.length > 0) && (@group_subs.length >= @group.max_attendees) %>   
+											<span class="custom-badge-ilh red">Closed (full)</span>
+										<% end %>
+										
                   <span class="custom-badge-ilh green"><%= @group.work_period %></span>
 									</h2>
 									<%if current_user == @group.user %><small style="font-size:13px"><%= link_to 'Edit', edit_group_path(@group)%> | <%= link_to 'Delete', group_path(@group), :method => :delete, data: {:confirm => "You sure?" } %></small><%end%>
@@ -53,13 +51,12 @@
 
                 <%unless @group.max_attendees.nil?%>
                   <% if (@group_subs.count < @group.max_attendees) || (@user_sub == true) %>
-                <%end%> 
-    
-                  <% if @user_sub == true %>
+                	<%end%> 
+								
+									<% if current_user == @group.user %>
+									<% elsif @user_sub == true %>
                     <%= link_to "Leave group", {:controller => "subscriptions", :action => 'destroy', :group_id => @group.id}, class: "btn btn-outline-primary", method: :delete %>
-                  <%end%>
-                  
-                  <% if @user_sub == false %>
+                  <% elsif @user_sub == false %>
                     <%= link_to "Join group", group_subscriptions_path(@group.id), class: "btn btn-primary", method: :post %>
                   <%end%>
 
