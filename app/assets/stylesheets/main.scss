@@ -908,6 +908,20 @@ footer {
   }
 }
 
+.attendees {
+      max-width: 80px;
+    background-color: #fff !important;
+    margin-left: 5px !important;
+}
+
+.datepicker {
+  border-radius: 0 5px 5px 0px !important;
+  max-width: 200px !important;
+  padding: 5px 20px !important;
+  margin: 0px 0 !important;
+  height: 100% !important;
+}
+
 .copyright-full-width {
   margin-top: 30px;
   border-top: solid 1px #ddd;
@@ -1218,7 +1232,7 @@ footer {
   top: -40px;
 }
 .add-groupe-heading .form-panel .heading-grey .cta-add-minus button {
-  line-height: 30px;
+  line-height: 23px;
 }
 @media (max-width: 765px) {
   .add-groupe-heading .form-panel .heading-grey .cta-add-minus button {

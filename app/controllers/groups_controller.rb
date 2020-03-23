@@ -45,6 +45,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
+        Subscription.create(user:@group.user,group_id:@group.id)
         format.html { redirect_to edit_group_path(@group), flash: { info:'Good choice mate :) !' }}
         format.json { render :show, status: :created, location: @group }
       else

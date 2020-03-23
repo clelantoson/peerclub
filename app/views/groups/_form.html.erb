@@ -37,15 +37,14 @@
 											<%= form.label :title, "<span></span>".html_safe%>
 											<%= form.text_field :title, class:"form-control title", placeholder:"My awesome group title" %>
 										</div>
-<%= form.label :date_of_tour %>
-<%= form.date_field :date_of_tour, "data-provide" => 'datepicker' %>
 
 										<div class="input-group date-in">
 											<div class="input-group mb-2">
 												<div class="input-group-prepend">
 													<div class="input-group-text"></div>
 												</div>
-												<input type="text" class="form-control" id="inlineFormInputGroup" placeholder="13 novembre">
+												<%= form.label :start_date, "<span></span>".html_safe %>
+												<%= form.date_field :starting_date, "data-provide" => 'datepicker', id:"inlineFormInputGroup", class:"form-control datepicker", style:"line-height: 2.5 !important;"  %>
 											</div>
 										</div>
 
@@ -63,14 +62,27 @@
 													</h3>
 
 													<div class="cta-add-minus">
-														<button class="btn" disabled="disabled"><i class="fas fa-user"></i> 5</button>
-														<button class="btn">+ participant</button>
+														<%= form.label :max_attendees, '<i class="fas fa-user"></i>'.html_safe %>
+    												<%= form.number_field :max_attendees, class:"btn attendees" %>
+														<button class="btn" disabled="disabled">+ attendees</button>
 													</div>
 												</div>
+
 												<div class="input-group">
-													<label for="location">Location :</label>
-													<input type="text" class="form-control location" id="location" placeholder="Type event location">
+													<%= form.label :meeting_point, "Location :" %>
+													<%= form.text_field :meeting_point, class:"form-control location", id:"location", placeholder:"Type event location" %>
 												</div>
+
+												<div class="input-group">
+													<%= form.label :city, "City :" %>
+													<%= form.text_field :city, class:"form-control location", id:"city", placeholder:"Type city" %>
+												</div>
+
+												<div class="input-group">
+													<%= form.label :remote, "Remote group ?" %>
+													<%= form.check_box :remote, class:"icheck" %>
+												</div>
+
 
 
 												<div class="input-group">
@@ -78,17 +90,11 @@
 													<%= form.text_area :description, class:"form-control", placeholder:"Tell us more about your group...", cols:"30", rows:"10"%>
 												</div>
 												<div class="input-group">
-													<label for="pace">Pace :</label>
-													<select name="	" class="form-control" id="">
-														<option value="">All mornings</option>
-													</select>
+
+													<%= form.label :work_period, "Pace :" %>
+    											<%= form.select(:work_period, ['Week-ends', 'Evenings', 'Mornings', 'All days long'], {}, class:"form-control") %>
 												</div>
-												<div class="input-group">
-													<label for="ambiance">Ambiance</label>
-													<select name="" class="form-control" id="">
-														<option value="">Mega funzer</option>
-													</select>
-												</div>
+
 											</div>
 											<div class="col-md-1">	</div>
 											<div class="col-md-3">
@@ -116,9 +122,8 @@
 
 									<div class="form-group">	
 										<div class="input-group text-center">
-											<div class="cta-s">	
-												<button class="btn back">Back</button>
-												<button class="btn submit" role="submit">Create Groupe</button>
+											<div class="cta-s">
+												<%= form.submit :submit, class:"btn btn-primary" %>
 											</div>
 										</div>
 									</div>
@@ -132,74 +137,3 @@
 				</div>
 			</div>
 		</section>
-
-
-
-<!--old page-->
-<%= form_with(model: group, local: true) do |form| %>
-  <% if group.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
-
-      <ul>
-      <% group.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-<!---->
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-<!---->
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-<!---->
-
-
-  <div class="field">
-  Course title :  <%= @group.udemy_course_title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :starting_date %>
-    <%= form.date_select :starting_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :max_attendees %>
-    <%= form.number_field :max_attendees %>
-  </div>
-
-  <div class="field">
-    <%= form.label :meeting_point %>
-    <%= form.text_field :meeting_point %>
-  </div>
-
-    <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city %>
-  </div>
-
-  <div class="field">
-    <%= form.label :remote %>
-    <%= form.check_box :remote %>
-  </div>
-
-  <div class="field">
-    <%= form.label :work_period %>
- 
-    <%= form.select(:work_period, ['Week-end', 'Soirée', 'Journée'], {}) %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
