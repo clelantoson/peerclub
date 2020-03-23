@@ -1,0 +1,78 @@
+<div class="container-fluid pb-5">
+  
+  <!-- TITLE SECTION -->
+  <div class="container pt-5 text-left">
+    <h2 class="pt-3"><span style="font-size:1.8rem;">Group<% unless @city_query.empty? %> in <span style="color:rgba(62,48,142,1);font-weight:bold;font-size: 2.3rem !important;"><%= @city_query %></span><%end%><% unless @search_query.empty? %> to learn <span style="color:rgba(62,48,142,1);font-weight:bold;font-size: 2.3rem !important;"><%= @search_query %></span><%end%></span></h2>
+    <p class="sub-section"><%= @groups_found.count%> result<% if @groups_found.count > 1 %>s<%end%></p>
+  </div>
+  <!-- END TITLE SECTION -->
+
+  <!-- CARDS -->
+  <!-- <div class="container card-deck mx-auto row pb-5 pt-5"> -->
+<div class="container reverse.pt-5">
+  <div class="row">
+
+    <% if @groups_found.count == 0 %>
+      <%= image_tag "nogroup.png", class:"img-fluid mt-5 mx-auto"%>
+    <%end%>
+    <% @groups_found.sort_by(&:created_at).reverse.each do |group| %>
+    <% @group_subs = Subscription.where(group_id:group.id) %>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card card-shadow mt-4">
+            <%= image_tag group.udemy_url_img, class:"card-img-top img-fluid p-2" unless group.udemy_url_img.nil?  %>
+            <div class="card-block">
+                <h4 class="card-title"><%= link_to "#{group.title}", group %></h4>
+                <small class="card-text"><%= group.udemy_course_title  %></small>
+                <small><p class="card-text">
+                  <% if (@group_subs.length > 0) && (@group_subs.length < group.max_attendees) && (group.starting_date <= Time.now) %>   
+                    <span class="text-green">Opening to join</span>
+                  <% elsif (@group_subs.length == nil?) && (group.starting_date <= Time.now) %>   
+                    <span class="text-green">Opening to join</span>
+                  <% elsif (@group_subs.length == nil?) && (group.starting_date >= Time.now) %>   
+                    <span class="text-orange">Start a <%= group.starting_date %></span>
+                  <% elsif (@group_subs.length > 0) && (@group_subs.length < group.max_attendees) && (group.starting_date >= Time.now) %>   
+                    <span class="text-orange">Start at <%= group.starting_date %></span>
+                  <% elsif (@group_subs.length > 0) && (@group_subs.length >= group.max_attendees) %>   
+                    <span class="text-red">Closed (full)</span>
+                  <% end %>
+                  
+                   - 
+                  <%=group.city%>
+                </p></small>
+
+                <!--comment-->
+                <% if false %>
+                <% end %>
+                <!--comment-->
+
+                <div class="avatar-zone">
+                <% i = 0 %>
+                <%unless @group_subs.nil? %>
+              
+                <% while (i < 5) do %>
+                    <span>
+                      <%unless @group_subs[i].nil? %>
+                      <%= link_to image_tag(@group_subs[i].user.avatar, style:"width:30px; height:30px", class:"rounded-circle mt-2"), user_path(@group_subs[i].user) if @group_subs[i].user.avatar.attached? %>
+                      <%end%>
+                    </span>
+                  <% i += 1 %>
+                <% end %>
+                <%end%>
+                </div>
+                <!--comment-->
+                <% if false %>
+                <% end %>
+                <!--comment-->
+            </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+</div>
+
+  <!-- CTA -->
+  <div class="container text-center">
+  <%= link_to 'Create your own group', new_group_path, class:"btn btn-primary text-center" %>
+  </div>
+  <!-- END CTA -->

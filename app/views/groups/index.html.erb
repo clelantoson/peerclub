@@ -1,3 +1,4 @@
 <p id="notice"><%= notice %></p>
 <%= render "layouts/header_group_index" %>
+<% unless @groups_found.nil? %><%= render "results_groups" %><%end%>
 <%= render "last_groups" %>

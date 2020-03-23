@@ -8,7 +8,8 @@ class GroupsController < ApplicationController
   def index
     @search_query = params[:search]
     @city_query = params[:city]
-    @groups = Group.search(@search_query, @city_query)
+    @groups = Group.all
+    @groups_found = Group.search(@search_query, @city_query)
   end
 
   # GET /groups/1.json
