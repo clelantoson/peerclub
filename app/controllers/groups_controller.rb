@@ -42,7 +42,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
-        format.html { redirect_to edit_group_path(@group), flash: { success:'Your group was successfully created.' }}
+        format.html { redirect_to edit_group_path(@group), flash: { info:'Good choice mate :) !' }}
         format.json { render :show, status: :created, location: @group }
       else
         format.html { render :new }
@@ -56,7 +56,7 @@ class GroupsController < ApplicationController
   def update
     respond_to do |format|
       if @group.update(group_params)
-        format.html { redirect_to @group, flash: { success:'Your group was successfully updated.' }}
+        format.html { redirect_to @group, flash: { success:'Your group was successfully created ! Enjoy !' }}
         format.json { render :show, status: :ok, location: @group }
       else
         format.html { render :edit }

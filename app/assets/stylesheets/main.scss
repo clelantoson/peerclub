@@ -153,6 +153,19 @@ h2 {
   border-color:rgb(47, 36, 109) !important;
 }
 
+.btn-search {
+    line-height: 35px !important;
+    color:#fff !important;
+    font-weight: bold !important;
+    border-radius: 0 8px 8px 0px !important;
+    background-color: #3b388a !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    border-color: #3b388a !important;
+    text-transform: uppercase !important;
+    font-size: 14px !important;
+}
+
 .btn-primary {
   font-weight: bold !important;
   color: #fff !important;
@@ -650,7 +663,7 @@ input[type=text] {
   display: block;
   width: 40px;
   height: 30px;
-  background: url(../images/arrow.png) no-repeat center center transparent;
+  background: url(arrow.png) no-repeat center center transparent;
   position: absolute;
   background-size: 100%;
   position: absolute;
@@ -1043,7 +1056,6 @@ footer {
 }
 .search-result-bloc .body-search-content .item-search > div .metas-course-search {
   display: table;
-  width: 100%;
 }
 @media (max-width: 765px) {
   .search-result-bloc .body-search-content .item-search > div .metas-course-search {
@@ -1073,8 +1085,8 @@ footer {
     margin-right: auto;
   }
 }
-.search-result-bloc .body-search-content .item-search > div .metas-course-search > div:first-child .photo-course img {
-  border-radius: 100%;
+.img-course-list {
+  border-radius: 10%;
 }
 .search-result-bloc .body-search-content .item-search > div .metas-course-search > div:last-child a {
   text-decoration: none;
@@ -1098,16 +1110,16 @@ footer {
   }
 }
 .search-result-bloc .body-search-content .item-search > div:first-child {
-  width: 10%;
-}
-.search-result-bloc .body-search-content .item-search > div:nth-child(2) {
   width: 40%;
 }
-.search-result-bloc .body-search-content .item-search > div:last-child {
+.search-result-bloc .body-search-content .item-search > div:nth-child(2) {
   width: 50%;
   color: #989898;
   font-size: 14px;
   font-weight: 500;
+}
+.search-result-bloc .body-search-content .item-search > div:last-child {
+  width: 10%;
 }
 @media (max-width: 765px) {
   .search-result-bloc .body-search-content .item-search > div:last-child {
@@ -1129,7 +1141,7 @@ footer {
   height: auto;
   border-radius: 8px 0px 0px 8px;
   min-width: 350px;
-  background: url(../images/img_548890.png) no-repeat center left #fff;
+  background: url(img_548890.png) no-repeat center left #fff;
   background-position-x: 20px;
   padding-left: 60px;
 }

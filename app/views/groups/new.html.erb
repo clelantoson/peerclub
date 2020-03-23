@@ -1,38 +1,91 @@
-<h1>New Group</h1>
-
-    <%=flash[:danger]%>
-
-<%= form_tag("", method: "get") do %>
-  <%= label_tag(:search, "Recherche un cours sympa") %>
-  <%= text_field_tag(:search, @search_query) %>
-  <%= submit_tag("Rechercher") %>
-<% end %>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">Course title</th>
-      <th scope="col">Description</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-   <tbody>
-      <% @courses.each do |course| %>
-        <tr> 
-          <td> <%= image_tag(course['image_240x135']) %></td>
-          <td> <%= course['title'] %></td>
-          <td><%= course['headline'] %></td>
-
-          <%if user_signed_in? == true%>
-          <td><%= link_to "Choisir", groups_path(udemy_course_title: course['title'], udemy_course_id: course['id'], udemy_url_img: course['image_240x135']), method: :post %></td>
-          <% end %>
-        
-        </tr>
-        <% end %>
-    </tbody>
-
-</table>
+<%= render "layouts/header_group_create" %>
 
 
-<%= link_to 'Back', groups_path %>
+<section>
+			<div class="container">	
+				<div class="row">	
+						<div class="col-md-12">	
+								<!-- TITLE SECTION -->
+                <div class="pt-5 pb-3 text-left">
+                  <h2 class="pt-3">Choose your Udemy course</h2>
+                  <p class="sub-section">Browse Udemy course and create a group</p>
+                </div>
+                <!-- END TITLE SECTION -->
+                <!-- Search form -->
+                <%if false%>
+                  <%=flash[:danger]%>
+								<%end%>	
+                  <div class="search-form">
+										<%= form_tag("", method: "get", class:"form-inline") do %>
+											<div class="form-group">
+										    <%= label_tag("") %>
+                        <%= text_field_tag(:search, @search_query, placeholder:"What do you want to learn in group ?", class:"form-control") %>
+                      </div>
+                    <%= submit_tag("Search", class:"btn btn-search") %>
+                    <% end %>
+									</div>
+								<!-- End search form -->
+
+								<div class="search-result-bloc">	
+									<div class="heading-bloc">
+										<div>
+										Course title
+										</div>
+										<div>
+											Description
+										</div>
+									</div>
+									<div class="body-search-content">
+
+
+                  <% @courses.each do |course| %>
+										<!--- item search -->
+										<div class="item-search">
+											
+											<div>
+												<div class="metas-course-search">
+													
+														<div class="photo-course pr-4">
+															<%= image_tag(course['image_240x135'], class:"img-course-list", style:"max-width:100px;" ) %>
+														</div>
+
+													<div>
+														<% course_url = "https://www.udemy.com/course/" + "#{course['id'].to_s}"%>
+                            <%= link_to course['title'], course_url, target: "_blank" %>
+													</div>
+
+												</div>
+											</div>
+
+											<div class="pr-4 pl-4">
+													<%= course['headline'] %><br>
+                          <span><%= course['price'] %></span>
+											</div>
+                      <div>
+                      <%if user_signed_in? == true%>
+                      <%= link_to  "Choisir", groups_path(udemy_course_title: course['title'], udemy_course_id: course['id'], udemy_url_img: course['image_240x135']), class:"btn btn-outline-primary", method: :post %>
+                      <% end %>
+											</div>
+										</div>
+										<!-- end item -->
+                  <% end %>
+										
+									</div>
+								</div>
+						</div>
+				</div>
+        <div class="text-center">
+        <%= link_to '< Back', groups_path, class:"btn btn-grey mt-5 text-center" %>
+        </div>
+			</div>
+		</section>
+
+		<script>
+			$(document).ready(function(){
+			  $('.icheck').iCheck({
+			    checkboxClass: 'icheckbox_flat-blue',
+			    radioClass: 'iradio_flat-blue',
+			    increaseArea: '20%' // optional
+			  });
+			});
+		</script>

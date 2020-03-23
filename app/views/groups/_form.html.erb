@@ -1,3 +1,105 @@
+<section>
+<div class="container">
+<div class="row">
+					<div class="col-md-12">
+          <!-- TITLE SECTION -->
+                <div class="pt-5 pb-3 text-left">
+                  <h2 class="pt-3">Choose your Udemy course</h2>
+                  <p class="sub-section">Browse Udemy course and create a group</p>
+                </div>
+                <!-- END TITLE SECTION -->
+						<div class="add-groupe-heading">
+							<div class="heading">
+								<h2>Create a groupe</h2>
+							</div>
+							<div class="form-panel">
+								<form action="">
+									<div class="form-group">
+										<div class="input-group">
+											<input type="text" class="form-control title" placeholder="My awesome group title">
+										</div>
+										<div class="input-group date-in">
+											<div class="input-group mb-2">
+												<div class="input-group-prepend">
+													<div class="input-group-text"></div>
+												</div>
+												<input type="text" class="form-control" id="inlineFormInputGroup" placeholder="13 novembre">
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-md-8">
+												<div class="heading-grey">
+													<h3>
+													Group Info
+													</h3>
+
+													<div class="cta-add-minus">
+														<button class="btn" disabled="disabled"><i class="fas fa-user"></i> 5</button>
+														<button class="btn">+ participant</button>
+													</div>
+												</div>
+												<div class="input-group">
+													<label for="location">Location :</label>
+													<input type="text" class="form-control location" id="location" placeholder="Type event location">
+												</div>
+												<div class="input-group">
+													<label for="description">Description : </label>
+													<textarea name="" class="form-control" placeholder="" id="" cols="30" rows="10"></textarea>
+												</div>
+												<div class="input-group">
+													<label for="pace">Pace :</label>
+													<select name="	" class="form-control" id="">
+														<option value="">All mornings</option>
+													</select>
+												</div>
+												<div class="input-group">
+													<label for="ambiance">Ambiance</label>
+													<select name="" class="form-control" id="">
+														<option value="">Mega funzer</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-1">	</div>
+											<div class="col-md-3">
+												<div class="title-column">
+													<h3>Your Course</h3>
+												</div>
+												<div class="get_course_box_ilh white">
+													<div class="image_ilh">
+														<img src="https://via.placeholder.com/300x200" alt="" class="img-fluid">
+													</div>
+													<div class="caption_ilh">
+														<h3>Ruby complete guide in 400 hours of hardcore coding</h3>
+														<div class="text-center">
+															<a href="#" class="btn custom-btn">Get te course</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group">	
+										<div class="input-group text-center">
+											<div class="cta-s">	
+												<button class="btn back">Back</button>
+												<button class="btn submit" role="submit">Create Groupe</button>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+
+<!--old page-->
 <%= form_with(model: group, local: true) do |form| %>
   <% if group.errors.any? %>
     <div id="error_explanation">

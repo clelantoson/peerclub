@@ -4,7 +4,7 @@
 
 <%= render "layouts/header_group_show" %>
 
-<section id="course-section-details">
+    <section id="course-section-details">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-9 col-sm-8 col-xs-12">
@@ -78,7 +78,7 @@
                   
                   <div class="text-center mt-3 mb-3">
                   <% course_url = "https://www.udemy.com/course/" + "#{@group.udemy_course_id.to_s}"%>
-									<%= link_to "Get the course", course_url, class:"btn-custom" %>
+									<%= link_to "Get the course", course_url, target: "_blank", class:"btn-custom" %>
 								</div>               
               </div>
             </div>
@@ -92,7 +92,7 @@
 		</section>
 
 
-<section id="tabs-ilh">
+    <section id="tabs-ilh">
 			<div class="container mt-5">
 				<div class="row">
 					<div class="col-md-12">
@@ -100,7 +100,7 @@
 							<div class="nav nav-tabs" id="nav-tab" role="tablist">
 								<a class="nav-item nav-link active sky" id="nav-course-tab" data-toggle="tab" href="#nav-course" role="tab" aria-controls="nav-course" aria-selected="true"><i class="fas fa-bookmark"></i>Course</a>
 								<a class="nav-item nav-link blue" id="nav-discussion-tab" data-toggle="tab" href="#nav-discussion" role="tab" aria-controls="nav-discussion" aria-selected="false"><i class="fas fa-cocktail"></i>Discussion</a>
-								<a class="nav-item nav-link green" id="nav-participant-tab" data-toggle="tab" href="#nav-participant" role="tab" aria-controls="nav-participant" aria-selected="false"><i class="fas fa-user"></i>Participants (<%= @group_subs.count %>)</a>
+								<a class="nav-item nav-link green" id="nav-participant-tab" data-toggle="tab" href="#nav-participant" role="tab" aria-controls="nav-participant" aria-selected="false"><i class="fas fa-user"></i>Attendee<%unless @group.max_attendees.nil?%><% if (@group.max_attendees > 1) %>s<%end%><%end%> (<%= @group_subs.count %>)</a>
 							</div>
 						</nav>
 					</div>
@@ -109,7 +109,7 @@
 		</section>
 
 
-<section id="content-tabs-ilh">
+    <section id="content-tabs-ilh">
 			
 			<div class="tab-content" id="nav-tabContent">
 				<div class="tab-pane fade show active" id="nav-course" role="tabpanel" aria-labelledby="nav-course-tab">
@@ -125,7 +125,26 @@
 				</div>
 			</div>
 		</section>
+    
 
+<section id="sejoindre-ilh">
+			<div class="container">	
+				<div class="row">
+
+        <!-- TITLE SECTION -->
+          <div class="col-md-12 text-center">
+            <h2 class="pt-3">Join your group</h2>
+            <p class="sub-section">
+              La félicita - Paris<br>
+              Quai alain turning
+            </p>
+          </div>
+        <!-- END TITLE SECTION -->
+
+				</div>
+			</div>
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2626.354627368286!2d2.370604051442904!3d48.83237401039025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e673c1a7b05e93%3A0x43df410cb9fd7b90!2sLa%20Felicit%C3%A0!5e0!3m2!1sfr!2sfr!4v1584946772893!5m2!1sfr!2sfr" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+</section>
 
 <script>
 $('#myTab a').on('click', function (e) {
