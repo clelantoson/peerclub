@@ -4,20 +4,42 @@
 					<div class="col-md-12">
           <!-- TITLE SECTION -->
                 <div class="pt-5 pb-3 text-left">
-                  <h2 class="pt-3">Choose your Udemy course</h2>
-                  <p class="sub-section">Browse Udemy course and create a group</p>
+                  <h2 class="pt-3">Group details</h2></h2>
+                  <p class="sub-section">let us know more about the group</p>
                 </div>
                 <!-- END TITLE SECTION -->
 						<div class="add-groupe-heading">
+							
 							<div class="heading">
-								<h2>Create a groupe</h2>
+								<h4>Group title</h4>
 							</div>
+							
 							<div class="form-panel">
-								<form action="">
-									<div class="form-group">
-										<div class="input-group">
-											<input type="text" class="form-control title" placeholder="My awesome group title">
+							<%= form_with(model: group, local: true) do |form| %>
+								<%# <form action=""> %>
+
+								
+									<% if group.errors.any? %>
+										<div id="error_explanation">
+											<h5><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h5>
+
+											<ul>
+											<% group.errors.full_messages.each do |message| %>
+												<li><%= message %></li>
+											<% end %>
+											</ul>
 										</div>
+  								<% end %>
+
+									<div class="form-group form-group-head">
+
+										<div class="input-group">
+											<%= form.label :title, "<span></span>".html_safe%>
+											<%= form.text_field :title, class:"form-control title", placeholder:"My awesome group title" %>
+										</div>
+<%= form.label :date_of_tour %>
+<%= form.date_field :date_of_tour, "data-provide" => 'datepicker' %>
+
 										<div class="input-group date-in">
 											<div class="input-group mb-2">
 												<div class="input-group-prepend">
@@ -26,9 +48,14 @@
 												<input type="text" class="form-control" id="inlineFormInputGroup" placeholder="13 novembre">
 											</div>
 										</div>
+
 									</div>
-									<div class="form-group">
+
+
+									<div class="gorm-group form-group-core">
+
 										<div class="row">
+
 											<div class="col-md-8">
 												<div class="heading-grey">
 													<h3>
@@ -44,9 +71,11 @@
 													<label for="location">Location :</label>
 													<input type="text" class="form-control location" id="location" placeholder="Type event location">
 												</div>
+
+
 												<div class="input-group">
-													<label for="description">Description : </label>
-													<textarea name="" class="form-control" placeholder="" id="" cols="30" rows="10"></textarea>
+													<%= form.label :description, "Description :" %>
+													<%= form.text_area :description, class:"form-control", placeholder:"Tell us more about your group...", cols:"30", rows:"10"%>
 												</div>
 												<div class="input-group">
 													<label for="pace">Pace :</label>
@@ -63,22 +92,26 @@
 											</div>
 											<div class="col-md-1">	</div>
 											<div class="col-md-3">
-												<div class="title-column">
-													<h3>Your Course</h3>
-												</div>
-												<div class="get_course_box_ilh white">
-													<div class="image_ilh">
-														<img src="https://via.placeholder.com/300x200" alt="" class="img-fluid">
+
+												<div class="card create card-shadow mt-4">
+													<%= image_tag @group.udemy_url_img, class:"card-img-top img-fluid p-2" unless @group.udemy_url_img.nil?  %>
+													<div class="card-block">
+
+															<h6 class="text-center"><%= @group.udemy_course_title %><br><small style="line-height:2.5rem !important"><%=@udemy_course['price']%></small></h6>
+															
+															<div class="text-center mt-3 mb-3">
+															<% course_url = "https://www.udemy.com/course/" + "#{@group.udemy_course_id.to_s}"%>
+															<%= link_to "Get the course", course_url, target: "_blank", class:"btn-custom" %>
+
+
+														</div>               
 													</div>
-													<div class="caption_ilh">
-														<h3>Ruby complete guide in 400 hours of hardcore coding</h3>
-														<div class="text-center">
-															<a href="#" class="btn custom-btn">Get te course</a>
-														</div>
-													</div>
-												</div>
+            						</div>
+
+
 											</div>
 										</div>
+
 									</div>
 
 									<div class="form-group">	
@@ -89,7 +122,10 @@
 											</div>
 										</div>
 									</div>
-								</form>
+
+									<%end%>
+
+								<%# </form> %>
 							</div>
 						</div>
 					</div>
@@ -112,17 +148,21 @@
       </ul>
     </div>
   <% end %>
-
+<!---->
 
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
 
+<!---->
   <div class="field">
     <%= form.label :description %>
     <%= form.text_area :description %>
   </div>
+
+<!---->
+
 
   <div class="field">
   Course title :  <%= @group.udemy_course_title %>

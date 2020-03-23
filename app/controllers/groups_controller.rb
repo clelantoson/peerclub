@@ -32,6 +32,9 @@ class GroupsController < ApplicationController
 
   # GET /groups/1/edit
   def edit
+    @group = Group.last
+    udemy = Udemy.new
+    @udemy_course = udemy.course_details(@group.udemy_course_id)
   end
 
   # POST /groups
@@ -54,6 +57,7 @@ class GroupsController < ApplicationController
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json
   def update
+    
     respond_to do |format|
       if @group.update(group_params)
         format.html { redirect_to @group, flash: { success:'Your group was successfully created ! Enjoy !' }}
