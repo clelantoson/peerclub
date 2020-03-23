@@ -21,10 +21,14 @@ class Group < ApplicationRecord
   end
 
   # ========= END MAILER ========= 
-
-  def search_group(city, query)
-    groups_found = @groups.select {|group| group["city"] == city && group["udemy_course_title"].include?(query) }
-    groups_found
+  def self.search(search_query, city_query) 
+    groups = Group.all
+    if search_query.present? 
+      groups = groups.select {|group| group["udemy_course_title"].downcase.include?(search_query.downcase) }
+    end
+    if city_query.present?
+      groups = groups.select {|group| group["city"].downcase.include?(city_query.downcase) }
+    end
+    groups
   end
-  # groups_found = @groups.select {|group| group["city"] == @city_query && group["udemy_course_title"].include?(@search_query) }
 end

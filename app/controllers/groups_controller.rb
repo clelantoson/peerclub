@@ -6,12 +6,9 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all
     @search_query = params[:search]
     @city_query = params[:city]
-    
-    binding.pry
-    @groups.search_group(@search_query, @city_query)
+    @groups = Group.search(@search_query, @city_query)
   end
 
   # GET /groups/1.json
