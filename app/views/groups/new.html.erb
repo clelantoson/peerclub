@@ -25,6 +25,7 @@
                     <% end %>
 									</div>
 								<!-- End search form -->
+ <% unless @courses.nil? %>
 
 								<div class="search-result-bloc">	
 									<div class="heading-bloc">
@@ -37,8 +38,7 @@
 									</div>
 									<div class="body-search-content">
 
-
-                  <% @courses.each do |course| unless @courses.nil? %>
+                  <% @courses.each do |course| %>
 										<!--- item search -->
 										<div class="item-search">
 											
@@ -72,6 +72,7 @@
 										
 									</div>
 								</div>
+								<%end%>
 						</div>
 				</div>
         <div class="text-center">
