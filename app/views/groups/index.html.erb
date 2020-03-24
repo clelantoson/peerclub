@@ -2,3 +2,41 @@
 <%= render "layouts/header_group_index" %>
 <% unless @groups_found.nil? %><%= render "results_groups" %><%end%>
 <%= render "last_groups" %>
+
+<!---- Onglet start --->
+<!---- haut onglets --->
+<nav class="nav nav-tabs">
+  <a class="nav-item nav-link active" href="#ruby">Ruby</a>
+  <a class="nav-item nav-link" href="#php">PHP</a>
+  <a class="nav-item nav-link" href="#javascript">Javascript</a>
+  <a class="nav-item nav-link" href="#python">Python</a>
+  <a class="nav-item nav-link" href="#golang">Golang</a>
+  <a class="nav-item nav-link" href="#scala">Scala</a>
+</nav>
+<!---- content onglets --->
+<div class="tab-content">
+    <div class="tab-pane active" id="ruby">Texte ruby</div>
+    <div class="tab-pane" id="php">Tous les php</div>
+    <div class="tab-pane" id="javascript">Tous les JS</div>
+    <div class="tab-pane" id="python">Tous les codes python</div>
+    <div class="tab-pane" id="golang">Tous les golang</div>
+    <div class="tab-pane" id="scala">Tous les scala</div>
+</div>
+<hr>
+<p><strong>Onglet actif </strong>: <span id='actif'></span></p>
+<p><strong>Onglet précédent </strong>: <span id='precedent'></span></p>
+
+<!---- code JS Onglet --->
+<script type="text/javascript">
+  $('a')
+  .click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+  })
+  .on('shown.bs.tab', function (e) {
+    $('#actif').text($(e.target).text())
+    $('#precedent').text($(e.relatedTarget).text())
+  })
+</script>
+<!---- code JS Onglet fin --->
+<!----- Onglet fin---->
