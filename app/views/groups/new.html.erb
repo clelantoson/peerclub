@@ -37,7 +37,7 @@
 									</div>
 									<div class="body-search-content">
 
-                  <% @courses.each do |course| %>
+                  <% @courses.each do |course|  unless @courses.nil? %>
 										<!--- item search -->
 										<div class="item-search">
 											

@@ -75,7 +75,7 @@
             <div class="card card-shadow mt-4">
               <%= image_tag @group.udemy_url_img, class:"card-img-top img-fluid p-2" unless @group.udemy_url_img.nil?  %>
               <div class="card-block">
-                  <h6 class="text-center"><%= @group.udemy_course_title %><br><small style="line-height:2.5rem !important"><%=@udemy_course['price']%></small></h6>
+                  <h6 class="text-center"><%= @group.udemy_course_title %><br><small style="line-height:2.5rem !important"><%=@udemy_course['price'] unless @udemy_course.nil? %></small></h6>
                   
                   <div class="text-center mt-3 mb-3">
                   <% course_url = "https://www.udemy.com/course/" + "#{@group.udemy_course_id.to_s}"%>
