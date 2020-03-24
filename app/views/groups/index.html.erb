@@ -3,8 +3,8 @@
 <% unless @groups_found.nil? %><%= render "results_groups" %><%end%>
 <%= render "last_groups" %>
 
-<!---- Onglet start --->
-<!---- haut onglets --->
+<!---- Onglet start
+
 <nav class="nav nav-tabs">
   <a class="nav-item nav-link active" href="#ruby">Ruby</a>
   <a class="nav-item nav-link" href="#php">PHP</a>
@@ -13,7 +13,7 @@
   <a class="nav-item nav-link" href="#golang">Golang</a>
   <a class="nav-item nav-link" href="#scala">Scala</a>
 </nav>
-<!---- content onglets --->
+
 <div class="tab-content">
     <div class="tab-pane active" id="ruby">Texte ruby</div>
     <div class="tab-pane" id="php">Tous les php</div>
@@ -26,7 +26,7 @@
 <p><strong>Onglet actif </strong>: <span id='actif'></span></p>
 <p><strong>Onglet précédent </strong>: <span id='precedent'></span></p>
 
-<!---- code JS Onglet --->
+
 <script type="text/javascript">
   $('a')
   .click(function (e) {
@@ -38,5 +38,5 @@
     $('#precedent').text($(e.relatedTarget).text())
   })
 </script>
-<!---- code JS Onglet fin --->
+--->
 <!----- Onglet fin---->
