@@ -13,7 +13,7 @@
 								<div class="title-course">
 									<h2>
 									<%= @group.title %>
-									
+                <% unless @group_subs.nil? || group.max_attendees.nil? %>
 										<% if (@group_subs.length > 0) && (@group_subs.length < @group.max_attendees) && (@group.starting_date <= Time.now) %>   
 											<span class="custom-badge-ilh green">Opening to join</span>
 										<% elsif (@group_subs.length > 0) && (@group_subs.length < @group.max_attendees) && (@group.starting_date >= Time.now) %>   
@@ -21,6 +21,9 @@
 										<% elsif (@group_subs.length > 0) && (@group_subs.length >= @group.max_attendees) %>   
 											<span class="custom-badge-ilh red">Closed (full)</span>
 										<% end %>
+								<%else%>
+                    <span class="custom-badge-ilh green">Opening to join</span>
+                <%end%>
 										
                   <span class="custom-badge-ilh green"><%= @group.work_period %></span>
 									</h2>
