@@ -33,8 +33,13 @@ class GroupsController < ApplicationController
 
   # GET /groups/1/edit
   def edit
-    @group = Group.last
-    udemy = Udemy.new
+      unless params[:id].nil?
+        @group = Group.find_by(id:params[:id])
+      else
+        @group = Group.last
+      end    
+      # @group = Group.last
+      udemy = Udemy.new
     @udemy_course = udemy.course_details(@group.udemy_course_id)
   end
 
@@ -43,16 +48,25 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(udemy_course_title: params[:udemy_course_title], udemy_course_id: params[:udemy_course_id], udemy_url_img: params[:udemy_url_img])
     @group.user = current_user
+    @group.max_attendees = 10
+    @group.title = "My group to learn #{params[:udemy_course_title]}"
+    @group.meeting_point = "On the internet"
+    @group.city = "Wherever you want"
+    @group.description = "We will learn #{params[:udemy_course_title]}"
+    @group.work_period = "All days long"
+    @group.starting_date = DateTime.now
 
     respond_to do |format|
+
       if @group.save
-        if @group.max_attendees == 0 || @group.max_attendees.nil?
-          @group.max_attendees = 999
-        end
         Subscription.create(user:@group.user,group_id:@group.id)
         format.html { redirect_to edit_group_path(@group), flash: { info:'Good choice mate :) !' }}
         format.json { render :show, status: :created, location: @group }
       else
+        puts "=========================="
+        puts @group.errors.full_messages
+        puts "=========================="
+
         format.html { render :new }
         format.json { render json: @group.errors, status: :unprocessable_entity }
       end
@@ -64,10 +78,8 @@ class GroupsController < ApplicationController
   def update
     
     respond_to do |format|
+      
       if @group.update(group_params)
-        if @group.max_attendees == 0 || @group.max_attendees.nil?
-          @group.max_attendees = 999
-        end
         format.html { redirect_to @group, flash: { success:'Your group was successfully created ! Enjoy !' }}
         format.json { render :show, status: :ok, location: @group }
       else

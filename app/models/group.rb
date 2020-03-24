@@ -6,6 +6,15 @@ class Group < ApplicationRecord
   after_create :create_group_to_admin_email
   after_create :user_create_group_to_grp_admin_email
 
+  # validates :max_attendees, presence: true
+  # validates :title, presence: true
+  # validates :meeting_point, presence: true
+  # validates :city, presence: true
+  # validates :description, presence: true
+  # validates :starting_date, presence: true
+  # validates :work_period, presence: true
+
+
   # ========= START MAILER METHODS ========= 
 
   # TO ADMIN
