@@ -17,15 +17,16 @@
                 <hr>
                 <li class="list-unstyled"> Description : <%=@user.description %></li>
                 <li class="list-unstyled"> Birthday : <%= @user.date_of_birth %></li>
+                <li class="list-unstyled"><%= link_to "Edit infos", edit_user_registration_path, class:"btn btn-primary"  %></li>
+                <li class="list-unstyled"><h3>Change avatar ?</h3>
+                <%= form_tag avatars_path(@user), multipart: true do %>
+                <%= file_field_tag :avatar, onchange:"myFunction()" %>
+                <%= submit_tag "Edit Gravatar", disabled:true, id: 'submit_avatar', class:"btn btn-primary" %>
+                <% end %>
+              </li>
               </ul>
             </p>
           </div>
-
-          <h3>Change avatar ?</h3>
-          <%= form_tag avatars_path(@user), multipart: true do %>
-          <%= file_field_tag :avatar, onchange:"myFunction()" %>
-          <%= submit_tag "Update", disabled:true, id: 'submit_avatar', class:"btn btn-primary" %>
-          <% end %>
         </div>
       </div>
 
@@ -88,7 +89,7 @@
 <!-- <div class="col-sm-4 pt-5">
      <div class="card" style="width: 18rem;">
        <div class="text-center">
-         <%= image_tag @user.avatar, style:"max-width:100px", class: "rounded-circle" if @user.avatar.attached? %> 
+         <%= image_tag @user.avatar, style:"max-width:100px", class: "rounded-circle" if @user.avatar.attached? %>
        </div>
         <div class="card-body">
         <h1 class="card-title"><%= @user.first_name %> <%= @user.last_name %></h1>
@@ -97,8 +98,8 @@
               <li class="list-unstyled"> Job : <%= @user.job %></li>
                   <li class="list-unstyled"> Email : <%= @user.email %></li>
                   <hr>
-              <li class="list-unstyled"> Description : <%=@user.description %></li> 
-              <li class="list-unstyled"> Birthday : <%= @user.date_of_birth %></li> 
+              <li class="list-unstyled"> Description : <%=@user.description %></li>
+              <li class="list-unstyled"> Birthday : <%= @user.date_of_birth %></li>
             </ul>
           </p>
         </div>
@@ -120,12 +121,12 @@
             <p class="card-text">
               <% @user.groups.each do |group|%>
               <ul>
-                <li class="list-unstyled"><%=group.title%></li> 
-                <li class="list-unstyled"><%=group.starting_date%></li> 
-                <li class="list-unstyled">  <%=group.meeting_point%></li> 
+                <li class="list-unstyled"><%=group.title%></li>
+                <li class="list-unstyled"><%=group.starting_date%></li>
+                <li class="list-unstyled">  <%=group.meeting_point%></li>
                 <% end %>
                   <%if @user.groups.empty?%>
-                  <li class="list-unstyled"> <p>No group created yet</p></li> 
+                  <li class="list-unstyled"> <p>No group created yet</p></li>
                 <% end %>
               </ul>
             </p>
@@ -140,15 +141,15 @@
           <p class="card-text">
           <%@user.subscriptions.each do |s|%>
           <ul>
-            <li class="list-unstyled"><%=s.group.title%></li> 
-            <li class="list-unstyled"><%=s.group.starting_date%></li> 
+            <li class="list-unstyled"><%=s.group.title%></li>
+            <li class="list-unstyled"><%=s.group.starting_date%></li>
             <li class="list-unstyled">  <%=s.group.meeting_point%></li>
-            </ul> 
+            </ul>
             <% end %>
               <%if @user.subscriptions.empty?%>
-              <li class="list-unstyled"> <p>Not registered to a group yet</p></li> 
+              <li class="list-unstyled"> <p>Not registered to a group yet</p></li>
             <% end %>
-            
+
           </p>
           </div>
         </div>
