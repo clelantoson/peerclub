@@ -23,18 +23,21 @@
             <div class="card-block">
                 <h4 class="card-title"><%= link_to "#{group.title}", group %></h4>
                 <small class="card-text"><%= group.udemy_course_title  %></small>
+                
+                <% unless @group_subs.nil? || group.max_attendees.nil? %>
+                
                 <small><p class="card-text">
                   <% if (@group_subs.length > 0) && (@group_subs.length < group.max_attendees) && (group.starting_date <= Time.now) %>   
                     <span class="text-green">Opening to join</span>
-                  <% elsif (@group_subs.length == nil?) && (group.starting_date <= Time.now) %>   
-                    <span class="text-green">Opening to join</span>
-                  <% elsif (@group_subs.length == nil?) && (group.starting_date >= Time.now) %>   
-                    <span class="text-orange">Start a <%= group.starting_date %></span>
                   <% elsif (@group_subs.length > 0) && (@group_subs.length < group.max_attendees) && (group.starting_date >= Time.now) %>   
                     <span class="text-orange">Start at <%= group.starting_date %></span>
                   <% elsif (@group_subs.length > 0) && (@group_subs.length >= group.max_attendees) %>   
                     <span class="text-red">Closed (full)</span>
                   <% end %>
+
+                  <%else%>
+                    <span class="text-green">Opening to join</span>
+                  <%end%>
                   
                    - 
                   <%=group.city%>
