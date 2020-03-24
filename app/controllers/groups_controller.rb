@@ -46,6 +46,9 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
+        if @group.max_attendees == 0 || @group.max_attendees.nil?
+          @group.max_attendees = 999
+        end
         Subscription.create(user:@group.user,group_id:@group.id)
         format.html { redirect_to edit_group_path(@group), flash: { info:'Good choice mate :) !' }}
         format.json { render :show, status: :created, location: @group }
@@ -62,6 +65,9 @@ class GroupsController < ApplicationController
     
     respond_to do |format|
       if @group.update(group_params)
+        if @group.max_attendees == 0 || @group.max_attendees.nil?
+          @group.max_attendees = 999
+        end
         format.html { redirect_to @group, flash: { success:'Your group was successfully created ! Enjoy !' }}
         format.json { render :show, status: :ok, location: @group }
       else
