@@ -36,8 +36,8 @@
 										</div>
 									</div>
 									<div class="body-search-content">
-
-                  <% @courses.each do |course|  unless @courses.nil? %>
+									<%unless @courses.nil? %>
+                  <% @courses.each do |course| %>
 										<!--- item search -->
 										<div class="item-search">
 											
@@ -68,7 +68,7 @@
 										</div>
 										<!-- end item -->
                   <% end %>
-										
+										<%end%>
 									</div>
 								</div>
 
