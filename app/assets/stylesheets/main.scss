@@ -20,6 +20,7 @@ body {
   min-height: 93%;
 }
 
+
 .create {
   border:0px !important;
   min-height: 40% !important;
@@ -320,6 +321,18 @@ input[type=text] {
 @media (max-width: 765px) {
   .course-details .metas-course .title-course h2 {
     font-size: 32px;
+  }
+  .profile .avatar img {
+    float:left;
+  }
+  .profile .name {
+    padding-left: 7rem !important;
+  }
+  .profile .job {
+    padding-left: 7rem !important;
+  }
+  .profile .meta {
+    margin-top:2rem !important;
   }
 }
 .course-details .metas-course .metadata .metadata_box_ilh {
@@ -1382,3 +1395,37 @@ footer {
   font-size: 26px !important;
   color: #323c47 !important;
 }
+
+.profile .job {
+  font-size: 0.9rem;
+  color: grey;
+  font-weight: lighter;
+  margin-top: -6px;
+}
+
+.profile h3 {
+  font-weight:bold !important;
+}
+
+.profile .metaprofile {
+  text-transform: uppercase;
+  font-family: Roboto, sans-serif !important;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: grey;
+  letter-spacing: 1px;
+}
+
+.profile-section {
+  background-color: rgba(246,248,250,1);
+
+}
+
+.profile-section .card {
+  max-width: 300px !important;
+}
+
+.profile-section .metas {
+  padding:2rem;
+}
+
