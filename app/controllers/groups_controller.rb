@@ -33,13 +33,8 @@ class GroupsController < ApplicationController
 
   # GET /groups/1/edit
   def edit
-      unless params[:id].nil?
-        @group = Group.find_by(id:params[:id])
-      else
-        @group = Group.last
-      end    
-      # @group = Group.last
-      udemy = Udemy.new
+    @group = Group.find_by(id:params[:id])
+    udemy = Udemy.new
     @udemy_course = udemy.course_details(@group.udemy_course_id)
   end
 
