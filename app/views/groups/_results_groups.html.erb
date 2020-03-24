@@ -2,8 +2,8 @@
   
   <!-- TITLE SECTION -->
   <div class="container pt-5 text-left">
-    <h2 class="pt-3"><span style="font-size:1.8rem;">Group<%unless @city_query.nil? %><% unless @city_query.empty? %> in <span style="color:rgba(62,48,142,1);font-weight:bold;font-size: 2.3rem !important;"><%= @city_query %></span><%end%><%end%><%unless @search_query.nil? %><% unless @search_query.empty? %> to learn <span style="color:rgba(62,48,142,1);font-weight:bold;font-size: 2.3rem !important;"><%= @search_query %></span><%end%><%end%></span></h2>
-    <p class="sub-section"><%= @groups_found.count%> result<% if @groups_found.count > 1 %>s<%end%></p>
+    <h2 class="pt-3"><span style="font-size:1.8rem;">Groups<%unless @city_query.nil? %><% unless @city_query.empty? %> near <span style="color:rgba(62,48,142,1);font-weight:bold;font-size: 2.3rem !important;"><%= @city_query %></span><%end%><%end%><%unless @search_query.nil? %><% unless @search_query.empty? %> to learn <span style="color:rgba(62,48,142,1);font-weight:bold;font-size: 2.3rem !important;"><%= @search_query %></span><%end%><%end%></span></h2>
+
   </div>
   <!-- END TITLE SECTION -->
 
@@ -12,7 +12,7 @@
 <div class="container reverse.pt-5">
   <div class="row">
 
-    <% if @groups_found.count == 0 %>
+    <% if @groups_found.empty? %>
       <%= image_tag "nogroup.png", class:"img-fluid mt-5 mx-auto"%>
     <%end%>
     <% @groups_found.sort_by(&:created_at).reverse.each do |group| %>

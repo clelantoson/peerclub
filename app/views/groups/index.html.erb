@@ -2,8 +2,8 @@
 
 <%= render "layouts/header_group_index" %>
 
-<% unless @groups_found.nil? %>
-  <% unless @groups_found.count == Group.all.count %><%= render "results_groups" %><%end%>
+<% unless @groups_found.empty? %>
+ <%= render "results_groups" %>
 <% end %>
 
 <%= render "last_groups" %>

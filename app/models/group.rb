@@ -5,6 +5,8 @@ class Group < ApplicationRecord
   has_many :comments, dependent: :delete_all
   after_create :create_group_to_admin_email
   after_create :user_create_group_to_grp_admin_email
+  geocoded_by :city, latitude: :latitude, longitude: :longitude
+  after_validation :geocode, if: ->(obj){ obj.city.present? and obj.city_changed? }
 
   # validates :max_attendees, presence: true
   # validates :title, presence: true
@@ -31,14 +33,16 @@ class Group < ApplicationRecord
 
   # ========= END MAILER ========= 
   def self.search(search_query, city_query) 
-
-    groups_found = Group.all
+    if city_query.present?
+      groups_found = Group.near(city_query)
+    else
+     groups_found = Group.all
+    end
     if search_query.present?
       groups_found = groups_found.select {|group| group["udemy_course_title"].downcase.include?(search_query.downcase) }
     end
-    if city_query.present?
-      groups_found = groups_found.select {|group| group["city"].downcase.include?(city_query.downcase) }
-    end
     groups_found
   end
+
+  
 end
