@@ -31,7 +31,7 @@
         </div>
 
         <div class="col-md-8 col-sm-12 profile">
-          <span class="metaprofile mt-3">Own by you</span>
+          <span class="metaprofile mt-3">Own by <%= @user.first_name %></span>
           <div class="row pb-5"> 
             <%# <div class="align-self-stretch flex-column"> %>
               
@@ -91,8 +91,9 @@
 
           <div class="row pb-5"> 
             <%# <div class="align-self-stretch flex-column"> %>
-                <% @user.subscriptions.each do |s|%>
-
+            <% subs = @user.subscriptions.where(group_id:Group.where.not(user:@user)) %>
+                <% subs.each do |s|%>
+                
 
               <div class="col-md-4 col-sm-6 col-xs-12">
               
@@ -164,126 +165,6 @@
               </div>
               </div>
             </div>
-
-
-<!-- OLD PAGE MIA -->
-
-<!--<div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h2 class="card-title">Groups created</h2>
-              <p class="card-text">
-                <% @user.groups.each do |group|%>
-                <ul>
-                  <li class="list-unstyled"><%=group.title%></li>
-                  <li class="list-unstyled"><%=group.starting_date%></li>
-                  <li class="list-unstyled"> <%=group.meeting_point%></li>
-                  <% end %>
-                  <%if @user.groups.empty?%>
-                  <li class="list-unstyled">
-                    <p>No group created yet</p>
-                  </li>
-                  <% end %>
-                </ul>
-              </p>
-            </div>
-          </div>
-
-
-  GROUPS SUBSCRIBED BY USER
-        <div class="col-md-9 col-sm-12 align-self-stretch flex-column">
-        <div class="card" style="width: 18rem;">
-          <h2 class="card-title">Groups subscribed</h2>
-          <%@user.subscriptions.each do |s|%>
-          <div class="card">
-            <div class="card-body">
-
-              <p class="card-text">
-                <ul>
-                  <li class="list-unstyled"><%=s.group.title%></li>
-                  <li class="list-unstyled"><%=s.group.starting_date%></li>
-                  <li class="list-unstyled"> <%=s.group.meeting_point%></li>
-                </ul>
-              </p>
-            </div>
-          </div>
-          <% end %>
-          <%if @user.subscriptions.empty?%>
-          <p>Not registered to a group yet</p>
-          <% end %>
-
-        </div>
-        </div>-->
-
-<!-- <div class="col-sm-4 pt-5">
-     <div class="card" style="width: 18rem;">
-       <div class="text-center">
-         <%= image_tag @user.avatar, style:"max-width:100px", class: "rounded-circle" if @user.avatar.attached? %>
-       </div>
-        <div class="card-body">
-        <h1 class="card-title"><%= @user.first_name %> <%= @user.last_name %></h1>
-        <p class="card-text">
-            <ul>
-              <li class="list-unstyled"> Job : <%= @user.job %></li>
-                  <li class="list-unstyled"> Email : <%= @user.email %></li>
-                  <hr>
-              <li class="list-unstyled"> Description : <%=@user.description %></li>
-              <li class="list-unstyled"> Birthday : <%= @user.date_of_birth %></li>
-            </ul>
-          </p>
-        </div>
-      </div> -->
-
-
-<!-- <h3>Change avatar ?</h3>
-        <%= form_tag avatars_path(@user), multipart: true do %>
-          <%= file_field_tag :avatar, onchange:"myFunction()" %>
-          <%= submit_tag "Update", disabled:true, id: 'submit_avatar', class:"btn btn-primary" %>
-        <% end %>
-    </div>
-
-    <div class="col-sm-8 row">
-      <div class="col-sm-4 mx-auto">
-        <div class="card" style="width: 18rem;">
-          <div class="card-body">
-            <h2 class="card-title">Groups created</h2>
-            <p class="card-text">
-              <% @user.groups.each do |group|%>
-              <ul>
-                <li class="list-unstyled"><%=group.title%></li>
-                <li class="list-unstyled"><%=group.starting_date%></li>
-                <li class="list-unstyled">  <%=group.meeting_point%></li>
-                <% end %>
-                  <%if @user.groups.empty?%>
-                  <li class="list-unstyled"> <p>No group created yet</p></li>
-                <% end %>
-              </ul>
-            </p>
-            </div>
-          </div>
-        </div>
-
-      <div class="col-sm-4 mx-auto">
-        <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h2 class="card-title">Groups subscribed</h2>
-          <p class="card-text">
-          <%@user.subscriptions.each do |s|%>
-          <ul>
-            <li class="list-unstyled"><%=s.group.title%></li>
-            <li class="list-unstyled"><%=s.group.starting_date%></li>
-            <li class="list-unstyled">  <%=s.group.meeting_point%></li>
-            </ul>
-            <% end %>
-              <%if @user.subscriptions.empty?%>
-              <li class="list-unstyled"> <p>Not registered to a group yet</p></li>
-            <% end %>
-
-          </p>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
 
 <script>
   function myFunction() {
