@@ -10,12 +10,36 @@
     <style>
       @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
     </style>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v6.0&appId=213584126656258&autoLogAppEvents=1"></script>
   </head>
 
   <body>
+    <!-- facebook -->
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '{213584126656258}',
+        cookie     : true,
+        xfbml      : true,
+        version    : '{v6.0}'
+      });
 
+      FB.AppEvents.logPageView();
+
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "https://connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+  </script>
+  <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
    <!--comment-->
-  <% if false %>              
+  <% if false %>
        <% flash.each do |type, msg| %>
         <div class="alert alert-danger">
           <%= msg %>
@@ -30,7 +54,7 @@
 
 
   <%= yield %>
-    
+
   <%= render "layouts/footer" %>
 
   <script src="https://kit.fontawesome.com/b1724147a0.js" crossorigin="anonymous"></script>

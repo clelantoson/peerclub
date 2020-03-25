@@ -18,6 +18,8 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'faker'
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'sendgrid-ruby'
