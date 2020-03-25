@@ -44,5 +44,10 @@ class Group < ApplicationRecord
     groups_found
   end
 
+  def self.search_tab(tab) 
+    groups_tab = Group.all
+    groups_tab = groups_tab.select {|group| group["udemy_course_title"].downcase.include?(tab.downcase) }
+    groups_tab
+  end
   
 end

@@ -1,0 +1,57 @@
+<!-- Onglet -->
+<!-- TITLE SECTION -->
+  <div class="container pt-5 text-left">
+    <h2 class="pt-3">Popular languages</h2>
+    <p class="sub-section">Our top liked languages here</p>
+  </div>
+  <!-- END TITLE SECTION -->
+
+<section id="tabs-ilh">
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-md-12">
+            <nav class="custom-tab-nav-ilh">
+              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active sky" id="nav-ruby-tab" data-toggle="tab" href="#nav-ruby" role="tab" aria-controls="nav-ruby" aria-selected="true"><i class="far fa-gem"></i>Ruby</a>
+                <a class="nav-item nav-link blue" id="nav-react-tab" data-toggle="tab" href="#nav-react" role="tab" aria-controls="nav-react" aria-selected="false"><i class="fab fa-react"></i>React</a>
+                <a class="nav-item nav-link orange" id="nav-javascript-tab" data-toggle="tab" href="#nav-javascript" role="tab" aria-controls="nav-javascript" aria-selected="false"><i class="fab fa-js"></i>Javascript</a>
+                <a class="nav-item nav-link blue" id="nav-python-tab" data-toggle="tab" href="#nav-python" role="tab" aria-controls="nav-python" aria-selected="false"><i class="fab fa-python"></i>Python</a>
+                <a class="nav-item nav-link green" id="nav-php-tab" data-toggle="tab" href="#nav-php" role="tab" aria-controls="nav-php" aria-selected="false"><i class="fab fa-php"></i>PHP</a>
+                <a class="nav-item nav-link red" id="nav-c-tab" data-toggle="tab" href="#nav-c" role="tab" aria-controls="nav-c" aria-selected="false"><i class="fab fa-cuttlefish"></i>C++</a>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="content-tabs-ilh">
+
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-ruby" role="tabpanel" aria-labelledby="nav-ruby-tab">
+          <%= render "groups/ruby" %>
+        </div>
+
+        <div class="tab-pane fade" id="nav-react" role="tabpanel" aria-labelledby="nav-react-tab">
+          <%= render "groups/react" %>
+        </div>
+
+        <div class="tab-pane fade" id="nav-javascript" role="tabpanel" aria-labelledby="nav-javascript-tab">
+          <%= render "groups/javascript" %>
+        </div>
+
+        <div class="tab-pane fade" id="nav-python" role="tabpanel" aria-labelledby="nav-python-tab">
+          <%= render "groups/python" %>
+        </div>
+    
+        <div class="tab-pane fade" id="nav-php" role="tabpanel" aria-labelledby="nav-php-tab">
+          <%= render "groups/php" %>
+        </div>
+
+        <div class="tab-pane fade" id="nav-c" role="tabpanel" aria-labelledby="nav-c-tab">
+          <%= render "groups/c" %>
+        </div>
+      </div>
+    </section>
+<!-- Onglet -->
