@@ -4,15 +4,15 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>UN NOUVEAU COMMENTAIRE. ALERT ENVOYEE A TOUS LES MEMBRES DU GROUPE</h1>
+    <h1>Un nouveau commentaire a été ajouté à votre groupe :</h1>
 
-    <h1>Salut <%= @user.first_name %> et bienvenue chez nous !</h1>
+    <h1>Salut <%= first_name %>  !</h1>
     <p>
-      Tu t'es inscrit sur peerclub.io en utilisant l'e-mail suivant : <%= @user.email %>.
+      <%= user_who_commented %> a laissé un commentaire!
     </p>
     <p>
-      Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
+     Pour voir son contenu, connecte-toi via : <%= @url %>.
     </p>
-    <p> À très vite sur peerclub.io !
+    <p> À très vite sur peerclub.io !  </p>
   </body>
 </html>

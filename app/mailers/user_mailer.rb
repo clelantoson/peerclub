@@ -1,68 +1,62 @@
 class UserMailer < ApplicationMailer
   default from: 'no-reply@peerclub.io'
  
-  
+  def new_comment_alert_to_grp_users_email(group, user_who_commented)
+    grp_users = group.users    
 
-  def new_comment_alert_to_grp_users_email(grp_users)
-    #on récupère l'instance user pour ensuite pouvoir la passer à la view en @user
-    @grp_users = grp_users 
-
-    #on définit une variable @url qu'on utilisera dans la view d’e-mail
     @url  = 'https://www.peerclub.io' 
 
-    # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-    i = 0
-    while i < @grp_users.length do 
-      mail(to: @grp_users[i].user.email, subject: 'New comment in the group !') 
-      i += 1
-    end 
+    grp_users.each do |user|
+      if user != user_who_commented
+        mail(to: user.email, subject: 'A new comment has been sent to your group !') do |format|
+          format.html {
+            render locals: { first_name: user.first_name, user_who_commented: user_who_commented.first_name }
+          }
+        end
+      end
+    end
   end
 
-  def new_user_subscribe_alert_to_grp_users_email(grp_users)
-    #on récupère l'instance user pour ensuite pouvoir la passer à la view en @user
-    @grp_users = grp_users 
+  def new_user_subscribe_alert_to_grp_users_email(group, user_who_subscribed)
+    grp_users = group.users    
 
-    #on définit une variable @url qu'on utilisera dans la view d’e-mail
     @url  = 'https://www.peerclub.io' 
 
-    # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-    i = 0
-    while i < @grp_users.length do 
-      mail(to: @grp_users[i].user.email, subject: 'A new guy joins your group !') 
-      i += 1
-    end 
+    grp_users.each do |user|
+      if user != user_who_subscribed
+        mail(to: user.email, subject: 'A new guy joined your group !') do |format|
+          format.html {
+            render locals: { first_name: user.first_name, user_who_subscribed: user_who_subscribed.first_name }
+          }
+        end
+      end
+    end
   end
 
-  def user_create_group_to_grp_admin_email(user)
-    #on récupère l'instance user pour ensuite pouvoir la passer à la view en @user
-    @user = user 
+  # def user_create_group_to_grp_admin_email(user)
+  #   @user = user 
 
-    #on définit une variable @url qu'on utilisera dans la view d’e-mail
+  #   @url  = 'https://www.peerclub.io' 
+
+  #   mail(to: @user.email, subject: 'A new guy just subscribed to your group') 
+  # end
+
+  def user_subscribe_group_to_user_email(group, user_who_subscribed)
+    
     @url  = 'https://www.peerclub.io' 
 
-    # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-    mail(to: @user.email, subject: 'A new guy just sub to your group') 
-  end
+    mail(to: user_who_subscribed.email, subject: 'Thanks for subscribing') do |format|
+      format.html {
+        render locals: { first_name: user_who_subscribed.first_name, group_subscribed: group.title }
+      }
+    end
 
-  def user_subscribe_group_to_user_email(user)
-    #on récupère l'instance user pour ensuite pouvoir la passer à la view en @user
-    @user = user 
-
-    #on définit une variable @url qu'on utilisera dans la view d’e-mail
-    @url  = 'https://www.peerclub.io' 
-
-    # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-    mail(to: @user.email, subject: 'Thanks for subscribing') 
   end
 
   def welcome_to_user_email(user)
-    #on récupère l'instance user pour ensuite pouvoir la passer à la view en @user
+   
     @user = user 
-
-    #on définit une variable @url qu'on utilisera dans la view d’e-mail
     @url  = 'https://www.peerclub.io' 
-
-    # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
     mail(to: @user.email, subject: 'Bienvenue chez nous !') 
   end
 

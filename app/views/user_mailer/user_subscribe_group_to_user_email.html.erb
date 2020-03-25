@@ -4,15 +4,15 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>MERCI DE T ETRE INSCRIT AU GROUPE SUIVANT : </h1>
+    <h1>Merci pour ton inscription à un groupe </h1>
 
-    <h1>Salut <%= @user.first_name %> et bienvenue chez nous !</h1>
+    <h1>Salut <%= first_name %> </h1>
     <p>
-      Tu t'es inscrit sur peerclub.io en utilisant l'e-mail suivant : <%= @user.email %>.
+      Tu t'es inscrit dans le groupe suivant : <%= group_subscribed %>.
     </p>
     <p>
-      Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
+      Pour accéder à ton compte, connecte-toi via : <%= @url %>.
     </p>
-    <p> À très vite sur peerclub.io !
+    <p> À très vite sur peerclub.io ! </p>
   </body>
 </html>

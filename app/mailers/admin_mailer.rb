@@ -9,7 +9,7 @@ class AdminMailer < ApplicationMailer
     @url  = 'https://www.peerclub.io' 
 
     # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-    mail(to: @admin.email, subject: 'A new guy just creates a group !') 
+    mail(to: @admin.email, subject: 'A new guy just created a group !') 
   end
 
   def new_user_register_to_admin_email(admin)
@@ -20,7 +20,7 @@ class AdminMailer < ApplicationMailer
     @url  = 'https://www.peerclub.io' 
 
     # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-    mail(to: @admin.email, subject: 'A new guy joins peerclub !') 
+    mail(to: @admin.email, subject: 'A new guy joined peerclub !') 
   end
 
 
@@ -32,7 +32,7 @@ class AdminMailer < ApplicationMailer
     @url  = 'https://www.peerclub.io' 
 
     # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-    mail(to: @admin.email, subject: 'A new guy just sub a group !') 
+    mail(to: @admin.email, subject: 'A new guy just subscribed to a group !') 
   end
   
 end

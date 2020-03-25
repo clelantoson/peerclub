@@ -19,19 +19,17 @@ class Subscription < ApplicationRecord
   # TO USER
   # Alert All Users Of a Specific Group : A new guy joins the group
   def new_user_subscribe_alert_to_grp_users_email
-    puts "======================"
-    puts params
-    puts "======================"
-
-    grp = Group.find_by(id:params[:group_id])
-    grp_subs = grp.subscriptions
-    UserMailer.new_user_subscribe_alert_to_grp_users_email(grp_subs).deliver_now
+    group = self.group
+    user_who_subscribed = self.user
+    UserMailer.new_user_subscribe_alert_to_grp_users_email(group, user_who_subscribed).deliver_now
   end
 
   # TO USER
   # Thanks user to subscribe to a group
   def user_subscribe_group_to_user_email
-    UserMailer.user_subscribe_group_to_user_email(self).deliver_now
+    group = self.group
+    user_who_subscribed = self.user
+    UserMailer.user_subscribe_group_to_user_email(group, user_who_subscribed).deliver_now
   end
 
   # ========= END MAILER =========
