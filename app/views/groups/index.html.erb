@@ -3,40 +3,153 @@
 <% unless @groups_found.nil? %><%= render "results_groups" %><%end%>
 <%= render "last_groups" %>
 
-<!---- Onglet start
 
-<nav class="nav nav-tabs">
-  <a class="nav-item nav-link active" href="#ruby">Ruby</a>
-  <a class="nav-item nav-link" href="#php">PHP</a>
-  <a class="nav-item nav-link" href="#javascript">Javascript</a>
-  <a class="nav-item nav-link" href="#python">Python</a>
-  <a class="nav-item nav-link" href="#golang">Golang</a>
-  <a class="nav-item nav-link" href="#scala">Scala</a>
-</nav>
+<!-- Onglet -->
 
-<div class="tab-content">
-    <div class="tab-pane active" id="ruby">Texte ruby</div>
-    <div class="tab-pane" id="php">Tous les php</div>
-    <div class="tab-pane" id="javascript">Tous les JS</div>
-    <div class="tab-pane" id="python">Tous les codes python</div>
-    <div class="tab-pane" id="golang">Tous les golang</div>
-    <div class="tab-pane" id="scala">Tous les scala</div>
-</div>
-<hr>
-<p><strong>Onglet actif </strong>: <span id='actif'></span></p>
-<p><strong>Onglet précédent </strong>: <span id='precedent'></span></p>
+<section id="tabs-ilh">
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-md-12">
+            <nav class="custom-tab-nav-ilh">
+              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active sky" id="nav-course-tab" data-toggle="tab" href="#nav-course" role="tab" aria-controls="nav-course" aria-selected="true"><i class="fas fa-bookmark"></i>Ruby</a>
+                <a class="nav-item nav-link blue" id="nav-discussion-tab" data-toggle="tab" href="#nav-discussion" role="tab" aria-controls="nav-discussion" aria-selected="false"><i class="fas fa-cocktail"></i>PHP</a>
+                <a class="nav-item nav-link green" id="nav-participant-tab" data-toggle="tab" href="#nav-participant" role="tab" aria-controls="nav-participant" aria-selected="false"><i class="fas fa-user"></i>Javascript</a>
+                <a class="nav-item nav-link green" id="nav-participant-tab" data-toggle="tab" href="#nav-python" role="tab" aria-controls="nav-python" aria-selected="false"><i class="fas fa-user"></i>Python</a>
+                <a class="nav-item nav-link green" id="nav-participant-tab" data-toggle="tab" href="#nav-golang" role="tab" aria-controls="nav-participant" aria-selected="false"><i class="fas fa-user"></i>Golang</a>
+                <a class="nav-item nav-link green" id="nav-participant-tab" data-toggle="tab" href="#nav-scala" role="tab" aria-controls="nav-participant" aria-selected="false"><i class="fas fa-user"></i>Scala</a>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
 
 
-<script type="text/javascript">
-  $('a')
-  .click(function (e) {
-    e.preventDefault()
-    $(this).tab('show')
-  })
-  .on('shown.bs.tab', function (e) {
-    $('#actif').text($(e.target).text())
-    $('#precedent').text($(e.relatedTarget).text())
-  })
-</script>
---->
-<!----- Onglet fin---->
+    <section id="content-tabs-ilh">
+
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-course" role="tabpanel" aria-labelledby="nav-course-tab">
+          Ruby
+          <div class="row">
+    <% @groups.sort_by(&:title).each do |group| %>
+    <% @group_subs = Subscription.where(group_id:group.id) %>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card card-shadow mt-4">
+            <%= image_tag group.udemy_url_img, class:"card-img-top img-fluid p-2" unless group.udemy_url_img.nil?  %>
+            <div class="card-block">
+                <h4 class="card-title"><%= link_to "#{group.title}", group %></h4>
+                <small class="card-text"><%= group.udemy_course_title  %></small>
+                <small><p class="card-text">
+                  <% if (@group_subs.length > 0) && (@group_subs.length < group.max_attendees) && (group.starting_date <= Time.now) %>
+                    <span class="text-green">Opening to join</span>
+                  <% elsif (@group_subs.length == nil?) && (group.starting_date <= Time.now) %>
+                    <span class="text-green">Opening to join</span>
+                  <% elsif (@group_subs.length == nil?) && (group.starting_date >= Time.now) %>
+                    <span class="text-orange">Start a <%= group.starting_date %></span>
+                  <% elsif (@group_subs.length > 0) && (@group_subs.length < group.max_attendees) && (group.starting_date >= Time.now) %>
+                    <span class="text-orange">Start at <%= group.starting_date %></span>
+                  <% elsif (@group_subs.length > 0) && (@group_subs.length >= group.max_attendees) %>
+                    <span class="text-red">Closed (full)</span>
+                  <% end %>
+
+                   -
+                  <%=group.city%>
+                </p></small>
+                <% if false %>
+                <% end %>
+                <div class="avatar-zone">
+                <% i = 0 %>
+                <%unless @group_subs.nil? %>
+
+                <% while (i < 5) do %>
+                    <span>
+                      <%unless @group_subs[i].nil? %>
+                      <%= link_to image_tag(@group_subs[i].user.avatar, style:"width:30px; height:30px", class:"rounded-circle mt-2"), user_path(@group_subs[i].user) if @group_subs[i].user.avatar.attached? %>
+                      <%end%>
+                    </span>
+                  <% i += 1 %>
+                <% end %>
+                <%end%>
+                </div>
+                <% if false %>
+                <% end %>
+            </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+        </div>
+
+        <div class="tab-pane fade" id="nav-discussion" role="tabpanel" aria-labelledby="nav-discussion-tab">
+          PHP
+          <%= render "last_groups" %>
+        </div>
+
+        <div class="tab-pane fade" id="nav-participant" role="tabpanel" aria-labelledby="nav-participant-tab">
+         Javascript
+         <div class="row">
+    <% @groups.sort_by(&:created_at).reverse.each do |group| %>
+    <% @group_subs = Subscription.where(group_id:group.id) %>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card card-shadow mt-4">
+            <%= image_tag group.udemy_url_img, class:"card-img-top img-fluid p-2" unless group.udemy_url_img.nil?  %>
+            <div class="card-block">
+                <h4 class="card-title"><%= link_to "#{group.title}", group %></h4>
+                <small class="card-text"><%= group.udemy_course_title  %></small>
+                <small><p class="card-text">
+
+                  <% if (@group_subs.length == nil?) && (group.starting_date <= Time.now) %>
+                    <span class="text-green">Opening to join</span>
+                  <% elsif (@group_subs.length == nil?) && (group.starting_date >= Time.now) %>
+                    <span class="text-orange">Start a <%= group.starting_date %></span>
+                  <% elsif (@group_subs.length > 0) && (@group_subs.length < group.max_attendees) && (group.starting_date <= Time.now) %>
+                    <span class="text-green">Opening to join</span>
+                  <% elsif (@group_subs.length > 0) && (@group_subs.length < group.max_attendees) && (group.starting_date >= Time.now) %>
+                    <span class="text-orange">Start at <%= group.starting_date %></span>
+                  <% elsif (@group_subs.length > 0) && (@group_subs.length >= group.max_attendees) %>
+                    <span class="text-red">Closed (full)</span>
+                  <% end %>
+
+                   -
+                  <%=group.city%>
+                </p></small>
+                <% if false %>
+                <% end %>
+                <div class="avatar-zone">
+                <% i = 0 %>
+                <%unless @group_subs.nil? %>
+
+                <% while (i < 5) do %>
+                    <span>
+                      <%unless @group_subs[i].nil? %>
+                      <%= link_to image_tag(@group_subs[i].user.avatar, style:"width:30px; height:30px", class:"rounded-circle mt-2"), user_path(@group_subs[i].user) if @group_subs[i].user.avatar.attached? %>
+                      <%end%>
+                    </span>
+                  <% i += 1 %>
+                <% end %>
+                <%end%>
+                </div>
+                <% if false %>
+                <% end %>
+            </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+        </div>
+
+        <div class="tab-pane fade" id="nav-python" role="tabpanel" aria-labelledby="nav-participant-tab">
+         Python
+        </div>
+
+        <div class="tab-pane fade" id="nav-golang" role="tabpanel" aria-labelledby="nav-participant-tab">
+         Golang
+        </div>
+
+        <div class="tab-pane fade" id="nav-scala" role="tabpanel" aria-labelledby="nav-participant-tab">
+         Scala
+        </div>
+      </div>
+    </section>
+<!-- Onglet -->
