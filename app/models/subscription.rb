@@ -12,13 +12,20 @@ class Subscription < ApplicationRecord
   # TO ADMIN
   # Alert Admin : A new guy joins a group
   def new_user_subscribe_a_group_to_admin_email
-    AdminMailer.new_user_subscribe_a_group_to_admin_email(self).deliver_now
+    # admin = User.find_by(is_admin?: true)
+    # AdminMailer.new_user_subscribe_a_group_to_admin_email(admin).deliver_now
   end
 
   # TO USER
   # Alert All Users Of a Specific Group : A new guy joins the group
   def new_user_subscribe_alert_to_grp_users_email
-    UserMailer.new_user_subscribe_alert_to_grp_users_email(self).deliver_now
+    puts "======================"
+    puts params
+    puts "======================"
+
+    grp = Group.find_by(id:params[:group_id])
+    grp_subs = grp.subscriptions
+    UserMailer.new_user_subscribe_alert_to_grp_users_email(grp_subs).deliver_now
   end
 
   # TO USER
