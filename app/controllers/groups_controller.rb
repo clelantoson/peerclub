@@ -15,7 +15,7 @@ class GroupsController < ApplicationController
     @javascript = Group.search_tab("javascript")
     @python = Group.search_tab("python")
     @php = Group.search_tab("php")
-    @c = Group.search_tab("c")
+    @c = Group.search_tab("c++")
 
   end
 
