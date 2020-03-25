@@ -5,7 +5,11 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'false' %>
+    <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'false' %>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
     <%# <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> %>
     <style>
       @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
@@ -34,7 +38,8 @@
   <%= render "layouts/footer" %>
 
   <script src="https://kit.fontawesome.com/b1724147a0.js" crossorigin="anonymous"></script>
-
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-Zx3m9PKHpgbdzYO-PZZ6EIxM4fUaPP8&callback=initMap"
+  type="text/javascript"></script>
 </body>
 
 </html>

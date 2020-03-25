@@ -18,6 +18,7 @@
 //= require turbolinks
 //= require rails-ujs
 //= require toastr
+//= require gmaps-auto-complete
 
 $(document).ready(function() {
  // executes when HTML-Document is loaded and DOM is ready
@@ -52,4 +53,18 @@ $(document).ready(function() {
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     }
+});
+
+
+jQuery(function() {
+  var completer;
+
+  completer = new GmapsCompleter({
+    inputField: '#gmaps-input-address',
+    errorField: '#gmaps-error'
+  });
+
+  completer.autoCompleteInit({
+    country: "us"
+  });
 });

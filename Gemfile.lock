@@ -123,6 +123,8 @@ GEM
     geocoder (1.6.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    gmaps-autocomplete-rails (0.3.1)
+      rails (>= 3.1.0)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
     io-like (0.3.1)
@@ -284,6 +286,7 @@ DEPENDENCIES
   faraday
   font-awesome-rails
   geocoder
+  gmaps-autocomplete-rails
   jbuilder (~> 2.5)
   jquery-rails
   letter_opener

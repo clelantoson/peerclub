@@ -72,6 +72,11 @@
 													<%= form.label :meeting_point, "Location :" %>
 													<%= form.text_field :meeting_point, class:"form-control location", id:"location", placeholder:"Type event location" %>
 												</div>
+												
+												<div class="input-group">
+													<%= form.label :meeting_point, "Location :" %>
+													<%= form.text_field :meeting_point, :input_html =>{:id => 'gmaps-input-address'}, :placeholder => 'Start typing a place...' %>
+												</div>
 
 												<div class="input-group">
 													<%= form.label :city, "City :" %>
