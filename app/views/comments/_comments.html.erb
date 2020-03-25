@@ -3,7 +3,7 @@
 							<div class="col-md-12">
 								<div class="contenu-tabs-ilh">
 									<div class="replies-list">
-                  
+
 
 <%if @group.comments.empty?%>
 <p>No comment yet.</p>
@@ -25,12 +25,12 @@
 												<div class="body-comment-ilh">
 													<%= comment.content %>
 												</div>
-											
+
 											</div>
 										</div>
 										<!-- end reply -->
                   <%end%>
-										
+
 									</div>
                   <% if user_signed_in? %>
 									<%= render "comments/form" %>
