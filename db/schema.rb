@@ -87,8 +87,6 @@ ActiveRecord::Schema.define(version: 2020_03_25_104006) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "is_admin"
-    t.string "boolean"
     t.string "job"
     t.string "provider"
     t.string "uid"
