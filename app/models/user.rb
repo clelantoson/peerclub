@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  devise :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :groups, dependent: :delete_all
   has_many :subscriptions, dependent: :delete_all
@@ -15,23 +16,41 @@ class User < ApplicationRecord
   # validates :first_name, presence: true
   # validates :last_name, presence: true
   # validates :description, presence: true
-  # validates :email, presence: true, format: 
+  # validates :email, presence: true, format:
 
-  # ========= START MAILER METHODS ========= 
+def self.new_with_session(params, session)
+  super.tap do |user|
+    if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+      user.email = data["email"] if user.email.blank?
+    end
+  end
+end
+
+def self.from_omniauth(auth)
+  where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    user.email = auth.info.email
+    user.password = Devise.friendly_token[6,20]
+    user.first_name = auth.info.name   # assuming the user model has a name
+    @user.avatar = auth.info.image # assuming the user model has an image
+  end
+end
+
+
+  # ========= START MAILER METHODS =========
 
   # TO USER
   # Welcome email
   def welcome_to_user_email
     UserMailer.welcome_to_user_email(self).deliver_now
   end
-  
+
   # TO ADMIN
   # New user subscribe mail
   def new_user_register_to_admin_email
     AdminMailer.new_user_register_to_admin_email(self).deliver_now
   end
 
-  # ========= END MAILER ========= 
+  # ========= END MAILER =========
 
     def user_avatar(user_id)
 
@@ -42,10 +61,10 @@ class User < ApplicationRecord
       else
           image_tag 'default_avatar.jpg'
       end
-      
+
     end
 
-    def set_default_avatar 
+    def set_default_avatar
       unless self.avatar.attached?
         self.avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'default_avatar.png')), filename: 'default_avatar.png', content_type: 'image/png')
       end
