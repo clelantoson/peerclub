@@ -130,7 +130,7 @@ puts "User 10 created"
 #============================================#
 ## GROUPS START ##
 
-Group.create(user: user1,
+u = Group.new(user: user1,
 title: 'Learn React as YOLO',
 description: 'Come to our group to learn to master on of the best framework to create the fanciest website !',
 udemy_course_title: 'React - The Complete Guide (incl Hooks, React Router, Redux)',
@@ -144,7 +144,18 @@ city: "Paris",
 udemy_url_img: "https://i.udemycdn.com/course/240x135/1362070_b9a1_2.jpg")
 puts "Group 1/1 created"
 
-Group.create(user: user1,
+unless u.save 
+  puts "======================================"
+  puts "======================================"
+  puts "======================================"
+  puts u.errors.full_messages
+  puts "======================================"
+  puts "======================================"
+  puts "======================================"
+
+end
+
+z = Group.new(user: user1,
 title: 'Learn React as YOLO',
 description: 'Come to our group to learn to master on of the best framework to create the fanciest website !',
 udemy_course_title: 'React - The Complete Guide (incl Hooks, React Router, Redux)',
@@ -157,6 +168,17 @@ work_period: "Week-end",
 city: "Paris",
 udemy_url_img: "https://i.udemycdn.com/course/480x270/1611166_acf3_3.jpg")
 puts "Group 1/2 created"
+
+unless z.save 
+  puts "======================================"
+  puts "======================================"
+  puts "======================================"
+  puts z.errors.full_messages
+  puts "======================================"
+  puts "======================================"
+  puts "======================================"
+  
+end
 
 Group.create(user: user1,
 title: 'Learn React',
