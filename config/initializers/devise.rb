@@ -259,7 +259,7 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :facebook, '213584126656258', '7b5d0127996baa8090dba84c3595fc72', scope: 'email', info_fields: 'email,name', callback_url: "https://guarded-cove-21524.herokuapp.com/users/auth/facebook/callback"
+  config.omniauth :facebook, '213584126656258', '7b5d0127996baa8090dba84c3595fc72', scope: 'email', info_fields: 'email,name', callback_url: "https://peerclub.herokuapp.com/users/auth/facebook/callback"
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
