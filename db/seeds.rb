@@ -144,7 +144,7 @@ city: "Paris",
 udemy_url_img: "https://i.udemycdn.com/course/240x135/1362070_b9a1_2.jpg")
 puts "Group 1/1 created"
 
-unless u.save 
+unless u.save
   puts "======================================"
   puts "======================================"
   puts "======================================"
@@ -169,7 +169,7 @@ city: "Paris",
 udemy_url_img: "https://i.udemycdn.com/course/480x270/1611166_acf3_3.jpg")
 puts "Group 1/2 created"
 
-unless z.save 
+unless z.save
   puts "======================================"
   puts "======================================"
   puts "======================================"
@@ -177,7 +177,7 @@ unless z.save
   puts "======================================"
   puts "======================================"
   puts "======================================"
-  
+
 end
 
 Group.create(user: user1,
@@ -678,8 +678,8 @@ puts "Group 8/2 created"
 Group.create(user: user8,
 title: Faker::TvShows::RuPaul.queen,
 description: Faker::TvShows::DrWho.quote,
-udemy_course_title: 'Hands-On Artificial Neural Networks',
-udemy_course_id: 1151632,
+udemy_course_title: 'Apprends GRATUITEMENT et FACILEMENT les bases du C++',
+udemy_course_id: 2769598,
 max_attendees: rand(2..15),
 meeting_point: Faker::University.name ,
 starting_date: Faker::Date.forward(days: 365),
@@ -692,8 +692,8 @@ puts "Group 8/3 created"
 Group.create(user: user8,
 title: Faker::TvShows::RuPaul.queen,
 description: Faker::TvShows::DrWho.quote,
-udemy_course_title: 'Hands-On Neural Networks',
-udemy_course_id: 1151632,
+udemy_course_title: 'Formation C++ : Approfondir vos BASES et devenir AUTONOME',
+udemy_course_id: 2897008,
 max_attendees: rand(2..15),
 meeting_point: Faker::University.name ,
 starting_date: Faker::Date.forward(days: 365),
@@ -706,8 +706,8 @@ puts "Group 8/4 created"
 Group.create(user: user8,
 title: Faker::TvShows::RuPaul.queen,
 description: Faker::TvShows::DrWho.quote,
-udemy_course_title: 'Hands-On Neural Networks',
-udemy_course_id: 1151632,
+udemy_course_title: 'C++ : Apprenez les bases rapidement !',
+udemy_course_id: 1442118,
 max_attendees: rand(2..15),
 meeting_point: Faker::University.name ,
 starting_date: Faker::Date.forward(days: 365),
@@ -720,8 +720,8 @@ puts "Group 8/5 created"
 Group.create(user: user9,
 title: Faker::TvShows::RuPaul.queen,
 description: Faker::TvShows::DrWho.quote,
-udemy_course_title: 'Deep Learning A-Z™: Hands-On Artificial Neural Networks',
-udemy_course_id: 671544,
+udemy_course_title: 'Débuter en programmation C++',
+udemy_course_id: 1253126,
 max_attendees: 10,
 meeting_point: Faker::University.name ,
 starting_date: Faker::Date.forward(days: 365),
@@ -734,8 +734,8 @@ puts "Group 9/1 created"
 Group.create(user: user9,
 title: Faker::TvShows::RuPaul.queen,
 description: Faker::TvShows::DrWho.quote,
-udemy_course_title: 'Artificial Neural Networks',
-udemy_course_id: 1151632,
+udemy_course_title: 'Le C++ moderne par le développement de jeux',
+udemy_course_id: 1433002,
 max_attendees: rand(2..15),
 meeting_point: Faker::University.name ,
 starting_date: Faker::Date.forward(days: 365),
@@ -748,8 +748,8 @@ puts "Group 9/2 created"
 Group.create(user: user9,
 title: Faker::TvShows::RuPaul.queen,
 description: Faker::TvShows::DrWho.quote,
-udemy_course_title: 'Artificial Neural',
-udemy_course_id: 1151632,
+udemy_course_title: 'La formation complète du développeur PHP 7  MySQL 5',
+udemy_course_id: 824178,
 max_attendees: rand(2..15),
 meeting_point: Faker::University.name ,
 starting_date: Faker::Date.forward(days: 365),
@@ -762,8 +762,8 @@ puts "Group 9/3 created"
 Group.create(user: user9,
 title: Faker::TvShows::RuPaul.queen,
 description: Faker::TvShows::DrWho.quote,
-udemy_course_title: 'Hands-On Artificial',
-udemy_course_id: 1151632,
+udemy_course_title: 'Maîtrisez PHP et devenez autonome en programmation web',
+udemy_course_id: 2180416,
 max_attendees: rand(2..15),
 meeting_point: Faker::University.name ,
 starting_date: Faker::Date.forward(days: 365),
@@ -776,8 +776,8 @@ puts "Group 9/4 created"
 Group.create(user: user9,
 title: Faker::TvShows::RuPaul.queen,
 description: Faker::TvShows::DrWho.quote,
-udemy_course_title: 'Networks',
-udemy_course_id: 1151632,
+udemy_course_title: 'MVC : Créer des sites web PHP performants et organisés !',
+udemy_course_id: 1580302,
 max_attendees: rand(2..15),
 meeting_point: Faker::University.name ,
 starting_date: Faker::Date.forward(days: 365),
@@ -790,8 +790,8 @@ puts "Group 9/5 created"
 Group.create(user: user10,
 title: Faker::TvShows::RuPaul.queen,
 description: Faker::TvShows::DrWho.quote,
-udemy_course_title: 'Hands-On Networks',
-udemy_course_id: 671544,
+udemy_course_title: 'PHP et MySQL : la formation ULTIME',
+udemy_course_id: 1534272,
 max_attendees: rand(2..10),
 meeting_point: Faker::University.name ,
 starting_date: Faker::Date.forward(days: 365),
@@ -804,8 +804,8 @@ puts "Group 10/1 created"
 Group.create(user: user10,
 title: Faker::TvShows::RuPaul.queen,
 description: Faker::TvShows::DrWho.quote,
-udemy_course_title: 'Artificial Neural Networks',
-udemy_course_id: 671544,
+udemy_course_title: 'Data Science : Analyse de données avec Python',
+udemy_course_id: 1620090,
 max_attendees: rand(2..10),
 meeting_point: Faker::University.name ,
 starting_date: Faker::Date.forward(days: 365),
@@ -818,8 +818,8 @@ puts "Group 10/2 created"
 Group.create(user: user10,
 title: Faker::TvShows::RuPaul.queen,
 description: Faker::TvShows::DrWho.quote,
-udemy_course_title: 'Hands-On Artificial Networks',
-udemy_course_id: 671544,
+udemy_course_title: 'Web Scraping et APIs Scraping avec Python (Cas réels inclus)',
+udemy_course_id: 1302260,
 max_attendees: rand(2..10),
 meeting_point: Faker::University.name ,
 starting_date: Faker::Date.forward(days: 365),
@@ -832,8 +832,8 @@ puts "Group 10/3 created"
 Group.create(user: user10,
 title: Faker::TvShows::RuPaul.queen,
 description: Faker::TvShows::DrWho.quote,
-udemy_course_title: 'Hands-On Artificial Neural',
-udemy_course_id: 671544,
+udemy_course_title: 'Python : Formation complète pour débutant (cas réels inclus)',
+udemy_course_id: 1180708,
 max_attendees: rand(2..10),
 meeting_point: Faker::University.name ,
 starting_date: Faker::Date.forward(days: 365),
@@ -846,8 +846,8 @@ puts "Group 10/4 created"
 Group.create(user: user10,
 title: Faker::TvShows::RuPaul.queen,
 description: Faker::TvShows::DrWho.quote,
-udemy_course_title: 'Artificial Neural',
-udemy_course_id: 671544,
+udemy_course_title: 'La Formation Complète Python',
+udemy_course_id: 2281794,
 max_attendees: rand(2..10),
 meeting_point: Faker::University.name ,
 starting_date: Faker::Date.forward(days: 365),
