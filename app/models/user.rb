@@ -13,10 +13,10 @@ class User < ApplicationRecord
   after_create :new_user_register_to_admin_email
   after_create :set_default_avatar
 
-  # validates :first_name, presence: true
-  # validates :last_name, presence: true
-  # validates :description, presence: true
-  # validates :email, presence: true, format:
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :description, presence: true, length: { maximum: 500 }
+  validates :email, presence: true, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "email adress please" }
 
 def self.new_with_session(params, session)
   super.tap do |user|
