@@ -14,7 +14,7 @@ puts "Users destroyed"
 
 ## USERS START ##
 user1 = User.create(
-  email: "gt.thibaut@gmail.com",
+  email: "gt.thibaut+test@gmail.com",
   password: "123456",
   first_name: "Thibaut",
   last_name: "Gallice",
