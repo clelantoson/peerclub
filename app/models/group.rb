@@ -29,9 +29,9 @@ class Group < ApplicationRecord
   # TO USER
   # Thanks creator a the new group
   def user_create_group_to_grp_admin_email(group)
-    group = params[:id]
-    grp_admin = group.user
-    UserMailer.user_create_group_to_grp_admin_email(grp_admin).deliver_now
+    # group = params[:id]
+    # grp_admin = group.user
+    # UserMailer.user_create_group_to_grp_admin_email(grp_admin).deliver_now
   end
 
   # ========= END MAILER ========= 
