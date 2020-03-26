@@ -1,80 +1,85 @@
-<div class="container pt-5">
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="container mt-10rem mb-5 pt-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= image_tag resource.avatar, style:"width:100px; height:100px;", class: "rounded-circle" if resource.avatar.attached? %> 
+      <%= image_tag resource.avatar, style:"width:100px; height:100px;", class: "rounded-circle" if resource.avatar.attached? %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :avatar %><br />
-    <%= f.file_field :avatar %>
+        <div class="form-group">
+          <%= f.label :avatar %><br />
+          <%= f.file_field :avatar, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :first_name %><br />
+          <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :last_name %><br />
+          <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :date_of_birth %><br />
+          <%= f.date_field :date_of_birth, autofocus: true, autocomplete: "date_of_birth", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :description %><br />
+          <%= f.text_area :description, autofocus: true, autocomplete: "description", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :job %><br />
+          <%= f.text_field :job, autofocus: true, autocomplete: "job", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+        <div class="form-group">
+          <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+          <% if @minimum_password_length %>
+            <br />
+            <em><%= @minimum_password_length %> characters minimum</em>
+          <% end %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+          <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
+        </div>
+
+        <div class="actions mt-5">
+          <%= f.submit "Update", id: 'submitButtonId', class: "btn btn-lg btn-primary btn-block" %>
+        </div>
+      <% end %>
+      <div class="form-group">
+        <h3>Unhappy ?</h3>
+      </div>
+
+      <p><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-md btn-primary btn-block" %></p>
+
+      <%= link_to "Back", :back, class: "btn btn-sm btn-primary btn-block" %>
+
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :date_of_birth %><br />
-    <%= f.date_field :date_of_birth, autofocus: true, autocomplete: "date_of_birth" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description, autofocus: true, autocomplete: "description" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :job %><br />
-    <%= f.text_field :job, autofocus: true, autocomplete: "job" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update", id: 'submitButtonId' %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
-
 </div>
 
 <script>
@@ -89,17 +94,17 @@ function myFunction(){
     } else {
       s.removeAttribute('disabled');
     }
-  } 
+  }
   document.getElementById("text").innerHTML = txt;
 }
 
-if($('#user_current_password').val() ==  "") 
+if($('#user_current_password').val() ==  "")
    $('#submitButtonId').attr('disabled', true);
 
 $('#user_current_password').keyup(function(){
-    if($('#user_current_password').val() !=  "") 
-         $('#submitButtonId').attr('disabled', false);    
+    if($('#user_current_password').val() !=  "")
+         $('#submitButtonId').attr('disabled', false);
     else
-         $('#submitButtonId').attr('disabled', true);   
+         $('#submitButtonId').attr('disabled', true);
 });
 </script>
