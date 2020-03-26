@@ -47,7 +47,8 @@ end
   # TO ADMIN
   # New user subscribe mail
   def new_user_register_to_admin_email
-    AdminMailer.new_user_register_to_admin_email(self).deliver_now
+    # admin = User.find_by(is_admin?: true)
+    # AdminMailer.new_user_register_to_admin_email(admin).deliver_now
   end
 
   # ========= END MAILER =========
