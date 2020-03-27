@@ -3,8 +3,8 @@ class Group < ApplicationRecord
   has_many :subscriptions, dependent: :delete_all
   has_many :users, through: :subscriptions
   has_many :comments, dependent: :delete_all
-  # after_create :create_group_to_admin_email
-  # after_create :user_create_group_to_grp_admin_email
+  after_create :create_group_to_admin_email
+  after_create :user_create_group_to_grp_admin_email
   geocoded_by :city, latitude: :latitude, longitude: :longitude
   after_validation :geocode, if: ->(obj){ obj.city.present? and obj.city_changed? }
 
@@ -22,17 +22,17 @@ class Group < ApplicationRecord
   # TO ADMIN
   # Alert Admin : Group is created by someone
   def create_group_to_admin_email
-    # admin = User.find_by(is_admin?: true)
-    # AdminMailer.create_group_to_admin_email(admin).deliver_now
+    admin = User.find_by(is_admin?: true)
+    AdminMailer.create_group_to_admin_email(admin).deliver_now
   end
   
   # TO USER
   # Thanks creator a the new group
-  # def user_create_group_to_grp_admin_email(group)
-    # group = params[:id]
-    # grp_admin = group.user
-    # UserMailer.user_create_group_to_grp_admin_email(grp_admin).deliver_now
-  # end
+  def user_create_group_to_grp_admin_email(group)
+    group = params[:id]
+    grp_admin = group.user
+    UserMailer.user_create_group_to_grp_admin_email(grp_admin).deliver_now
+  end
 
   # ========= END MAILER ========= 
   def self.search(search_query, city_query) 

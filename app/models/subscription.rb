@@ -3,17 +3,17 @@ class Subscription < ApplicationRecord
   belongs_to :group
   
 
-  # after_create :new_user_subscribe_a_group_to_admin_email
-  # after_create :new_user_subscribe_alert_to_grp_users_email
-  # after_create :user_subscribe_group_to_user_email
+  after_create :new_user_subscribe_a_group_to_admin_email
+  after_create :new_user_subscribe_alert_to_grp_users_email
+  after_create :user_subscribe_group_to_user_email
 
   # ========= START MAILER METHODS ========= 
 
   # TO ADMIN
   # Alert Admin : A new guy joins a group
   def new_user_subscribe_a_group_to_admin_email
-    # admin = User.find_by(is_admin?: true)
-    # AdminMailer.new_user_subscribe_a_group_to_admin_email(admin).deliver_now
+    admin = User.find_by(is_admin?: true)
+    AdminMailer.new_user_subscribe_a_group_to_admin_email(admin).deliver_now
   end
 
   # TO USER
