@@ -4,8 +4,8 @@ class Subscription < ApplicationRecord
   
 
   # after_create :new_user_subscribe_a_group_to_admin_email
-  # after_create :new_user_subscribe_alert_to_grp_users_email
-  # after_create :user_subscribe_group_to_user_email
+  after_create :new_user_subscribe_alert_to_grp_users_email
+  after_create :user_subscribe_group_to_user_email
 
   # ========= START MAILER METHODS ========= 
 
