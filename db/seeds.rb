@@ -144,47 +144,6 @@ city: "Paris",
 udemy_url_img: "https://i.udemycdn.com/course/240x135/1362070_b9a1_2.jpg")
 puts "Group 1/1 created"
 
-Group.create(user: user1,
-title: 'Learn React en esprit',
-description: 'Come to our group to learn to master on of the best framework to create the fanciest website !',
-udemy_course_title: 'The Complete Guide (incl Hooks, React Router, Redux)',
-udemy_course_id: 1362070,
-max_attendees: 10,
-starting_date: Faker::Date.forward(days: 365),
-meeting_point: "Felicita",
-remote: Faker::Boolean.boolean,
-work_period: "Week-end",
-city: "Paris",
-udemy_url_img: "https://i.udemycdn.com/course/480x270/917856_5595_2.jpg")
-puts "Group 1/3 created"
-
-Group.create(user: user1,
-title: 'Javascript ES6 & React in team at La Félicità',
-description: 'Come to our group to learn to master on of the best framework to create the fanciest website !',
-udemy_course_title: 'React - The Complete Guide (incl Hooks, React Router, Redux)',
-udemy_course_id: 1362070,
-max_attendees: 10,
-starting_date: Faker::Date.forward(days: 365),
-meeting_point: "Felicita",
-remote: Faker::Boolean.boolean,
-work_period: "Week-end",
-city: "Paris",
-udemy_url_img: "https://i.udemycdn.com/course/480x270/567828_67d0.jpg")
-puts "Group 1/4 created"
-
-Group.create(user: user1,
-title: 'THP Next en groupe de 5 tranquillou',
-description: 'Come to our group to learn to master on of the best framework to create the fanciest website !',
-udemy_course_title: 'React - The Complete Guide (incl Hooks, React Router, Redux)',
-udemy_course_id: 1362070,
-max_attendees: 10,
-starting_date: Faker::Date.forward(days: 365),
-meeting_point: "Felicita",
-remote: Faker::Boolean.boolean,
-work_period: "Week-end",
-city: "Paris",
-udemy_url_img: "https://i.udemycdn.com/course/480x270/805992_d306_8.jpg")
-puts "Group 1/5 created"
 
 
 Group.create(user: user3,
@@ -751,6 +710,22 @@ city: Faker::Nation.capital_city,
 udemy_url_img: "https://i.udemycdn.com/course/480x270/1180708_2a1b_5.jpg")
 puts "Group 10/5 created"
 
+# update GROUPS
+
+all_groups = Group.all
+
+all_groups.each do |group|
+  udemy = Udemy.new
+  group.update(
+    udemy_course_title: "#{udemy.course_details(group.udemy_course_id)['title']}",
+    udemy_url_img: "#{udemy.course_details(group.udemy_course_id)['image_240x135']}",
+    starting_date: Faker::Date.between_except(from: 15.days.ago, to: 15.days.from_now, excepted: Date.today)
+
+  )
+  group.update(
+    title: "Learn #{group.udemy_course_title} in team",
+  )
+end
 
 user1.avatar.attach(io: File.open('app/assets/images/1.jpeg'), filename: '1.jpeg', content_type: 'image/jpeg')
 user2.avatar.attach(io: File.open('app/assets/images/2.jpeg'), filename: '2.jpeg', content_type: 'image/jpeg')
@@ -768,7 +743,7 @@ i = 0
 y = 0
 users = User.all
 groups = Group.all
-while i < users.length do
+while i < rand(i..10) do
   puts "1"
   while y < groups.length do
   puts "2"

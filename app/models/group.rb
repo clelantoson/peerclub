@@ -3,18 +3,18 @@ class Group < ApplicationRecord
   has_many :subscriptions, dependent: :delete_all
   has_many :users, through: :subscriptions
   has_many :comments, dependent: :delete_all
-  after_create :create_group_to_admin_email
-  after_create :user_create_group_to_grp_admin_email
+  # after_create :create_group_to_admin_email
+  # after_create :user_create_group_to_grp_admin_email
   geocoded_by :city, latitude: :latitude, longitude: :longitude
   after_validation :geocode, if: ->(obj){ obj.city.present? and obj.city_changed? }
 
-  validates :max_attendees, presence: true
-  validates :title, presence: true, length: { in: 2..130 }
-  validates :meeting_point, presence: true
-  validates :city, presence: true
-  validates :description, presence: true, length: { in: 6..500 }
-  validates :starting_date, presence: true
-  validates :work_period, presence: true
+  # validates :max_attendees, presence: true
+  # validates :title, presence: true, length: { in: 2..130 }
+  # validates :meeting_point, presence: true
+  # validates :city, presence: true
+  # validates :description, presence: true, length: { in: 6..500 }
+  # validates :starting_date, presence: true
+  # validates :work_period, presence: true
 
 
   # ========= START MAILER METHODS ========= 
