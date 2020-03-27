@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :delete_all
   has_one_attached :avatar, dependent: :delete_all
   after_create :welcome_to_user_email
-  after_create :new_user_register_to_admin_email
+  # after_create :new_user_register_to_admin_email
   after_create :set_default_avatar
 
   validates :first_name, presence: true
@@ -46,10 +46,10 @@ end
 
   # TO ADMIN
   # New user subscribe mail
-  def new_user_register_to_admin_email
-    admin = User.find_by(is_admin?: true)
-    AdminMailer.new_user_register_to_admin_email(admin).deliver_now
-  end
+  # def new_user_register_to_admin_email
+  #   admin = User.find_by(is_admin?: true)
+  #   AdminMailer.new_user_register_to_admin_email(admin).deliver_now
+  # end
 
   # ========= END MAILER =========
 
