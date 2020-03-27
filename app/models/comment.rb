@@ -2,7 +2,7 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :group
   
-  after_create :new_comment_alert_to_grp_users_email
+  # after_create :new_comment_alert_to_grp_users_email
 
   # ========= START MAILER METHODS ========= 
 

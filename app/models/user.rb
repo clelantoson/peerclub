@@ -9,9 +9,9 @@ class User < ApplicationRecord
   has_many :subscriptions, dependent: :delete_all
   has_many :comments, dependent: :delete_all
   has_one_attached :avatar, dependent: :delete_all
-  after_create :welcome_to_user_email
-  after_create :new_user_register_to_admin_email
-  after_create :set_default_avatar
+  # after_create :welcome_to_user_email
+  # after_create :new_user_register_to_admin_email
+  # after_create :set_default_avatar
 
   validates :first_name, presence: true
   validates :last_name, presence: true
