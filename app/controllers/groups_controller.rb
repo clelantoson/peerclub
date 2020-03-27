@@ -52,8 +52,8 @@ class GroupsController < ApplicationController
     @group.user = current_user
     @group.max_attendees = rand(2..15)
     @group.title = "My group to learn #{params[:udemy_course_title]}"
-    # @group.meeting_point = "On the internet"
-    # @group.city = "Wherever you want"
+    @group.meeting_point = "On the internet"
+    @group.city = "Wherever you want"
     @group.description = "We will learn #{params[:udemy_course_title]}"
     @group.work_period = "All days long"
     @group.starting_date = DateTime.now
