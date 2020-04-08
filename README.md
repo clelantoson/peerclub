@@ -21,3 +21,4 @@ FACEBOOK_APP_SECRET=
 - rails db:create
 - rails db:migrate
 - rails db:seed
+
