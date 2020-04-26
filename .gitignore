@@ -27,3 +27,4 @@
 /config/master.key
 /config/application.yml
 .env
+.DS_Store

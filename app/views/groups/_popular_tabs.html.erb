@@ -1,7 +1,7 @@
 <!-- card -->
 <div class="container">
 <div class="row">
-    <% @php.sort_by(&:created_at).reverse.each do |group| %>
+    <% @groups.find_by_tab(locals[:language]).each do |group| %>
     <% @group_subs = Subscription.where(group_id:group.id) %>
       <div class="col-sm-6 col-md-4 col-lg-3">
         <div class="card card-shadow mt-4">

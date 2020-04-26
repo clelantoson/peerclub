@@ -15,8 +15,7 @@ class Group < ApplicationRecord
   validates :description, presence: true, length: { in: 6..500 }
   validates :starting_date, presence: true
   validates :work_period, presence: true
-
-
+  scope :find_by_tab, -> (language) {where('lower(udemy_course_title) LIKE ?', "%#{language.downcase}%").order(created_at: :desc)}
   # ========= START MAILER METHODS ========= 
 
   # TO ADMIN
@@ -33,7 +32,6 @@ class Group < ApplicationRecord
     grp_admin = group.user
     UserMailer.user_create_group_to_grp_admin_email(grp_admin).deliver_now
   end
-
   # ========= END MAILER ========= 
   def self.search(search_query, city_query) 
     if city_query.present?
@@ -46,11 +44,4 @@ class Group < ApplicationRecord
     end
     groups_found
   end
-
-  def self.search_tab(tab) 
-    groups_tab = Group.all
-    groups_tab = groups_tab.select {|group| group["udemy_course_title"].downcase.include?(tab.downcase) }
-    groups_tab
-  end
-  
 end
