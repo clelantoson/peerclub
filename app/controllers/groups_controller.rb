@@ -41,15 +41,7 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
-    @group = Group.new(udemy_course_title: params[:udemy_course_title], udemy_course_id: params[:udemy_course_id], udemy_url_img: params[:udemy_url_img])
-    @group.user = current_user
-    @group.max_attendees = rand(2..15)
-    @group.title = "My group to learn #{params[:udemy_course_title]}"
-    @group.meeting_point = "On the internet"
-    @group.city = "Wherever you want"
-    @group.description = "We will learn #{params[:udemy_course_title]}"
-    @group.work_period = "All days long"
-    @group.starting_date = DateTime.now
+    @group = Group.new(udemy_course_title: params[:udemy_course_title], udemy_course_id: params[:udemy_course_id], udemy_url_img: params[:udemy_url_img], user: current_user)
 
     respond_to do |format|
 
@@ -58,10 +50,7 @@ class GroupsController < ApplicationController
         format.html { redirect_to edit_group_path(@group), flash: { info:'Good choice mate :) !' }}
         format.json { render :show, status: :created, location: @group }
       else
-        puts "=========================="
         puts @group.errors.full_messages
-        puts "=========================="
-
         format.html { render :new }
         format.json { render json: @group.errors, status: :unprocessable_entity }
       end

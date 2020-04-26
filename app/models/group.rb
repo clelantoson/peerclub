@@ -15,6 +15,7 @@ class Group < ApplicationRecord
   validates :description, presence: true, length: { in: 6..500 }
   validates :starting_date, presence: true
   validates :work_period, presence: true
+  after_initialize :add_default_values 
   scope :find_by_tab, -> (language) {where('lower(udemy_course_title) LIKE ?', "%#{language.downcase}%").order(created_at: :desc)}
   # ========= START MAILER METHODS ========= 
 
@@ -43,5 +44,17 @@ class Group < ApplicationRecord
       groups_found = groups_found.select {|group| group["udemy_course_title"].downcase.include?(search_query.downcase) }
     end
     groups_found
+  end
+
+  private
+
+  def add_default_values
+    self.max_attendees ||= rand(2..15)
+    self.title ||= "My group to learn #{self.udemy_course_title}"
+    self.meeting_point ||= "On the internet"
+    self.city ||= "Wherever you want"
+    self.description ||= "We will learn #{self.udemy_course_title}"
+    self.work_period ||= "All days long"
+    self.starting_date ||= DateTime.now
   end
 end
